@@ -49,8 +49,16 @@
 
     var authenticate = function(req, res, sess, next) {
 
+
+
         var name = req.body.name;
         var password = req.body.password;
+
+        if (name==="" || password === "") {
+            res.json({ok:0, err: 'missing name or password'});
+            return;
+        }
+
         req.session.user = {name: name, authenticated: true};
         req.session.save(function(err) {
             // session saved
@@ -121,7 +129,7 @@
     if (app.get('env') === 'development') {
         app.use(function (err, req, res, next) {
             res.status(err.status || 500);
-            res.render('error', {
+            res.send('error', {
                 message: err.message,
                 error: err
             });
@@ -132,7 +140,7 @@
     // no stacktraces leaked to user
     app.use(function (err, req, res, next) {
         res.status(err.status || 500);
-        res.render('error', {
+        res.send('error', {
             message: err.message,
             error: {}
         });
