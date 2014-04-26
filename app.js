@@ -10,17 +10,26 @@
     var bodyParser = require('body-parser');
     var session = require('express-session');
     var mongoose = require('mongoose');
+    var path = require('path');
+    var favicon = require('static-favicon');
 
+    var routes = require('./routes/index');
 
     // DB Connect
     mongoose.connect('mongodb://localhost:27017/assignments');
 
     var app = express();
 
+    // view engine setup
+    app.set('views', path.join(__dirname, 'views'));
+    app.set('view engine', 'jade');
+
     app.use(logger('dev'));
     app.use(bodyParser.json());
     app.use(bodyParser.urlencoded());
     app.use(cookieParser());
+    app.use(express.static(path.join(__dirname, 'demo')));
+
 
 
     // Create cookie session
@@ -31,17 +40,13 @@
     // Top level - *all requests
     app.use(function (req, res, next) {
 
-
         var sess = req.session;
         req.session.authenticated = true;
-        console.log(req.session);
 
         // Session exist and user authenticate
         if (typeof req.session.user !== 'undefined' && req.session.user.authenticated === true) {
-            console.log('yipppy');
             next();
         } else {
-            console.log('shucks');
             authenticate(req, res, sess, next);
         }
 
@@ -49,22 +54,19 @@
 
     var authenticate = function(req, res, sess, next) {
 
-
-
+        //Hack Will Always create default user if none specified
         var name = req.body.name;
         var password = req.body.password;
 
-        if (name==="" || password === "") {
-            res.json({ok:0, err: 'missing name or password'});
-            return;
-        }
+        name='John';
+        password='password';
+
 
         req.session.user = {name: name, authenticated: true};
         req.session.save(function(err) {
             // session saved
         });
         next();
-
 
     };
 
@@ -78,12 +80,19 @@
 
     });
 
+
+
+    // Demo
+    app.get('/demo', function (req, res, next) {
+
+        res.render('index', { title: 'BizAssign Demo' });
+
+    });
+
     // Assignment verb level create
     app.post('/assignments/create', function (req, res, next) {
 
-
         res.json({ok:1, create:1});
-
 
     });
 
