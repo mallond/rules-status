@@ -4,18 +4,16 @@
 
 ## CRUD(l)
 
-Authenticate  curl http://localhost:3000/authenticate?name=john&pwd=smith
-  returns {"ok":1} 1=authenticated 0=fail
-
--    curl -X POST http://localhost:3000/assignments/create?input={test:'test'}
--    curl http://localhost:3000/assignments/read?input={test:'test'}
--    curl -X POST http://localhost:3000/assignments/update?input={test:'test'}
--    curl -X DELETE http://localhost:3000/assignments/delete?input={test:'test'}
--    curl http://localhost:3000/assignments/list?input={test:'test'}
+- curl -H "Content-Type: application/json" -b cookies.txt -c cookies.txt -X GET -d '{"name":"john","password":"password"}' http://localhost:3000/authenticate
+- curl -H "Content-Type: application/json" -b cookies.txt -c cookies.txt -X POST -d '{"test":"hono"}' http://localhost:3000/assignments/create
+- curl -H "Content-Type: application/json" -b cookies.txt -c cookies.txt -X GET -d '{"test":"hono"}' http://localhost:3000/assignments/read
+- curl -H "Content-Type: application/json" -b cookies.txt -c cookies.txt -X POST -d '{"test":"hono"}' http://localhost:3000/assignments/update
+- curl -H "Content-Type: application/json" -b cookies.txt -c cookies.txt -X DELETE -d '{"test":"hono"}' http://localhost:3000/assignments/delete
+- curl -H "Content-Type: application/json" -b cookies.txt -c cookies.txt -X GET -d '{"test":"hono"}' http://localhost:3000/assignments/list
 
 
 
-curl -X POST http://localhost:3000/assignments/read?input={test:'test'}
+
 
 # JSON
 ## Required Properties
