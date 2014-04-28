@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/bizrez-worklist.iml" filepath="$PROJECT_DIR$/.idea/bizrez-worklist.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/bizstatus.iml" filepath="$PROJECT_DIR$/.idea/bizstatus.iml" />
     </modules>
   </component>
 </project>

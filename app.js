@@ -34,25 +34,17 @@
     app.use(cookieParser());
     app.use(session({ secret: 'keyboard cat', cookie: { maxAge: 60000 }}));
 
-    // Top level - *all requests
+    // Top level - *all routes
     app.use(function (req, res, next) {
         security.authenticate(req, res, next);
     });
 
-    // Routes
-    app.post('/assignments/create', routes.create);
-    app.get( '/assignments/read', routes.read);
-    app.post('/assignments/update', routes.update);
-    app.del( '/assignments/delete', routes.del);
-    app.get( '/assignments/list', routes.list);
-    app.get( '/authenticate', function (req, res, next) {
-        var sess = req.session;
-        if (sess.user !== undefined && sess.user.authenticated === true) {
-            res.json({ok: 1});
-        } else {
-            res.json({ok: 0});
-        }
-    });
+    // Routes - CRUD
+    app.put('/status', routes.create);
+    app.get('/status', routes.read);
+    app.post('/status', routes.update);
+    app.delete('/status', routes.del);
+
     if (app.get('env') === 'development') {
         app.get('/demo', routes.demo);
     }
