@@ -39,8 +39,10 @@
         security.authenticate(req, res, next);
     });
 
-    // Routes - CRUD
-    app.put('/status', routes.create);
+    // Routes - CRUD Unix architecture of
+    // Everything is a File onto the Web's
+    // Everything is a URI making GET a '<', PUT a '>' and POST a pipe '|'
+    app.put('/status', routes.create);   // brand new idempotent
     app.get('/status', routes.read);
     app.post('/status', routes.update);
     app.delete('/status', routes.del);
