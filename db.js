@@ -1,19 +1,20 @@
 //     http://www.bizrez.com
 //     (c) 2004-2014 David Mallon
 //     Freely distributed under the MIT license.
-//     http://www.bizrez.com
-//     (c) 2004-2014 David Mallon
-//     Freely distributed under the MIT license.
 
-/*global require: false, module: false, model: false */
 
-(function () {
+/*global require: false, module: false, model: false, console: false*/
+
+(function (app) {
+
+    "use strict";
+
+    var config = require('./config.json');
 
     var mongoose = require('mongoose');
     var Schema = mongoose.Schema;
+
     var ObjectId = Schema.ObjectId;
-
-
 
     var StatusSchema = new Schema({
 
@@ -41,8 +42,9 @@
     mongoose.model('Status', StatusSchema);
 
     // DB Connect
-    mongoose.connect('mongodb://localhost:27017/bizrez');
-    console.log('mongoose connected');
+    var dbConnect = config.db.host+':'+config.db.port+'/'+config.db.name;
+    mongoose.connect(dbConnect);
+    console.log('mongoose connected: '+ dbConnect);
     console.log('db.js has been required');
 
 

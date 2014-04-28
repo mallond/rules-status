@@ -8,6 +8,7 @@
     var routes = require('./routes/status');
     var security = require('./security');
 
+
     var express = require('express');
     var logger = require('morgan');
     var cookieParser = require('cookie-parser');
@@ -18,6 +19,7 @@
     var favicon = require('static-favicon');
 
     var app = express();
+
 
     // view engine setup - demo only
     if (app.get('env') === 'development') {
@@ -83,6 +85,8 @@
 
     module.exports = app;
 
-    console.log('app.js Started');
+
+
+
 
 })();

@@ -1,8 +1,9 @@
 #!/usr/bin/env node
-var debug = require('debug')('my-application');
+var debug = require('debug')('bizstatus');
 var app = require('../app');
+var config = require('../config.json');
 
-app.set('port', process.env.PORT || 3000);
+app.set('port', process.env.PORT || config.nodePort);
 
 
 
