@@ -4,6 +4,10 @@
 
     "use strict";
 
+    var dao = require('./dao');
+    var routes = require('./routes/status');
+    var security = require('./security');
+
     var express = require('express');
     var logger = require('morgan');
     var cookieParser = require('cookie-parser');
@@ -13,16 +17,13 @@
     var path = require('path');
     var favicon = require('static-favicon');
 
-    var routes = require('./routes/index');
-
-    // DB Connect
-    mongoose.connect('mongodb://localhost:27017/assignments');
-
     var app = express();
 
-    // view engine setup
-    app.set('views', path.join(__dirname, 'views'));
-    app.set('view engine', 'jade');
+    // view engine setup - demo only
+    if (app.get('env') === 'development') {
+        app.set('views', path.join(__dirname, 'views'));
+        app.set('view engine', 'jade');
+    }
 
     app.use(logger('dev'));
     app.use(bodyParser.json());
@@ -34,46 +35,17 @@
     app.use(cookieParser());
     app.use(session({ secret: 'keyboard cat', cookie: { maxAge: 60000 }}));
 
-
     // Top level - *all requests
     app.use(function (req, res, next) {
-
-        var sess = req.session;
-        req.session.authenticated = true;
-
-        // Session exist and user authenticated
-        if (typeof req.session.user !== 'undefined' && req.session.user.authenticated === true) {
-            next();
-        } else {
-            authenticate(req, res, sess, next);
-        }
-
+        security.authenticate(req, res, next);
     });
 
-    var authenticate = function(req, res, sess, next) {
-
-        //Hack Will Always create default user if none specified
-        var name = req.body.name;
-        var password = req.body.password;
-
-        name='John';
-        password='password';
-
-        req.session.user = {name: name, authenticated: true};
-        req.session.save(function(err) {
-            // session saved
-        });
-        next();
-
-    };
-
-    // Demo only for dev environment only
-    if (app.get('env') === 'development') {
-        app.get('/demo', function (req, res, next) {
-            res.render('index', { title: 'BizAssign Demo' });
-        });
-    }
-
+    // Routes
+    app.post('/assignments/create', routes.create);
+    app.get('/assignments/read', routes.read);
+    app.post('/assignments/update', routes.update);
+    app.del('/assignments/delete', routes.del);
+    app.get('/assignments/list', routes.list);
     app.get('/authenticate', function (req, res, next) {
         var sess = req.session;
         if (sess.user !== undefined && sess.user.authenticated === true) {
@@ -81,35 +53,10 @@
         } else {
             res.json({ok: 0});
         }
-
     });
-
-    // Assignment verb level create
-    app.post('/assignments/create', function (req, res, next) {
-        res.json({ok:1, create:1});
-    });
-
-    // Assignment verb level read
-    app.get('/assignments/read', function (req, res, next) {
-        res.json({ok:1, read:1});
-    });
-
-    // Assignment verb level update
-    app.post('/assignments/update', function (req, res, next) {
-        var sess = req.session;
-        res.json({id: '/', description: ' you da dawg', dawg: sess.dawg});
-    });
-
-    // Assignment verb level delete
-    app.delete('/assignments/delete', function (req, res, next) {
-        var sess = req.session;
-        res.json({id: '/', description: ' you da dawg', dawg: sess.dawg});
-    });
-
-    // Assignment verb level list
-    app.get('/assignments/list', function (req, res, next) {
-        res.json({ok:1});
-    });
+    if (app.get('env') === 'development') {
+        app.get('/demo', routes.demo);
+    }
 
     // catch 404 and forwarding to error handler
     app.use(function (req, res, next) {
@@ -117,8 +64,6 @@
         err.status = 404;
         next(err);
     });
-
-
 
     // error handlers
 
@@ -146,4 +91,5 @@
 
     module.exports = app;
 
+    console.log('app.js Started');
 })();
