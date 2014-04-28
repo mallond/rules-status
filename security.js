@@ -16,8 +16,10 @@
 
         // Session exist and user authenticated
         if (typeof req.session.user !== 'undefined' && req.session.user.authenticated === true) {
+            console.log('yo go');
             next();
         } else {
+            console.log('no go');
             authenticate(req, res, sess, next);
         }
 

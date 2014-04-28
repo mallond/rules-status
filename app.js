@@ -34,19 +34,18 @@
     app.use(cookieParser());
     app.use(session({ secret: 'keyboard cat', cookie: { maxAge: 60000 }}));
 
-    // Top level - *all routes
-    app.use(function (req, res, next) {
+
+    // Routes on '/status
+    //    Unix thinking Everything is a URI making GET a '<', PUT a '>' and POST a pipe '|'
+    app.use('/status', function (req, res, next) {
         security.authenticate(req, res, next);
     });
-
-    // Routes - CRUD Unix architecture of
-    // Everything is a File onto the Web's
-    // Everything is a URI making GET a '<', PUT a '>' and POST a pipe '|'
     app.put('/status', routes.create);   // brand new idempotent
     app.get('/status', routes.read);
     app.post('/status', routes.update);
     app.delete('/status', routes.del);
 
+    // Route for demo
     if (app.get('env') === 'development') {
         app.get('/demo', routes.demo);
     }
