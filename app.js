@@ -4,7 +4,7 @@
 
     "use strict";
 
-    var dao = require('./dao');
+    var dao = require('./db');
     var routes = require('./routes/status');
     var security = require('./security');
 
@@ -21,14 +21,13 @@
 
     // view engine setup - demo only
     if (app.get('env') === 'development') {
-        app.set('views', path.join(__dirname, 'views'));
+        app.set('views', path.join(__dirname, 'demoViews'));
         app.set('view engine', 'jade');
     }
 
     app.use(logger('dev'));
     app.use(bodyParser.json());
     app.use(bodyParser.urlencoded());
-    app.use(cookieParser());
     app.use(express.static(path.join(__dirname, 'demo')));
 
     // Create cookie session
@@ -42,11 +41,11 @@
 
     // Routes
     app.post('/assignments/create', routes.create);
-    app.get('/assignments/read', routes.read);
+    app.get( '/assignments/read', routes.read);
     app.post('/assignments/update', routes.update);
-    app.del('/assignments/delete', routes.del);
-    app.get('/assignments/list', routes.list);
-    app.get('/authenticate', function (req, res, next) {
+    app.del( '/assignments/delete', routes.del);
+    app.get( '/assignments/list', routes.list);
+    app.get( '/authenticate', function (req, res, next) {
         var sess = req.session;
         if (sess.user !== undefined && sess.user.authenticated === true) {
             res.json({ok: 1});
@@ -92,4 +91,5 @@
     module.exports = app;
 
     console.log('app.js Started');
+
 })();

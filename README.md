@@ -17,34 +17,6 @@ Cookie based session - unfortunately each time you switch to a directory '/name'
 
 
 
-# JSON
-## Required Properties
 
-```
-assignee = {
-  orgUnit: 'Organization unit',
-  ownerId: 'owner of assignment',
-  ownerType: 'person || system'
-}
-
-assignment = {
-  assignee: {Object of type assignee},
-  type: 'type of assignment'
-  status: 'new, open, closed, hold',
-  statusInfo: 'why, what, where',
-  priority: 'low, med, high',
-  goalDate: Date(),
-  deadlineDate Date(),
-  header: '{} Object header',
-  body: '{} Object of details',
-  sourcelink: 'link to source for deep linking',
-  id: 'system generated'
-}
-
-```
-
-#
-
-### list
 
 

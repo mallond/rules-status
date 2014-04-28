@@ -13,12 +13,6 @@
     var Status = mongoose.model('Status');
 
 
-    /* GET home page. */
-    router.get('/demo', function (req, res) {
-        res.render('index', { title: 'Express' });
-    });
-
-
     router.create = function (req, res) {
 
         new Status ({
@@ -75,7 +69,7 @@
 
     router.demo = function (req, res) {
 
-        res.render('index', { title: 'BizAssign Demo' });
+        res.render('demo', { title: 'BizAssign Demo' });
 
     };
 
