@@ -21,11 +21,6 @@
     var app = express();
 
 
-    // view engine setup - demo only
-    if (app.get('env') === 'development') {
-        app.set('views', path.join(__dirname, 'demoViews'));
-        app.set('view engine', 'jade');
-    }
 
     app.use(logger('dev'));
     app.use(bodyParser.json());
