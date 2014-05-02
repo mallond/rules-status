@@ -8,15 +8,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
     <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
-    <link rel="shortcut icon" href="startup/flat-ui/images/favicon.ico">
 
-    <link rel="stylesheet" href="startup/flat-ui/bootstrap/css/bootstrap.css">
-    <link rel="stylesheet" href="startup/flat-ui/css/flat-ui.css">
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/flat-ui.css">
     <!-- Using only with Flat-UI (free)-->
-    <link rel="stylesheet" href="startup/common-files/css/icon-font.css">
     <!-- end -->
-    <link rel="stylesheet" href="startup/common-files/css/animations.css">
-    <link rel="stylesheet" href="static/css/style.css">
+
+    <link rel="stylesheet" href="css/style.css">
 
     <title>BizStatus Demo</title>
 </head>
@@ -34,12 +32,12 @@
                 <div class="col-sm-10">
                     <h4>Insert Status</h4>
 
-                    <form>
+                    <form id="theForm">
                         <table class="">
 
                             <tr>
                                 <td><label>Owner ID </label></td>
-                                <td><select>
+                                <td><select id="userSelected" name="user">
                                     <option value="Fred">Fred</option>
                                     <option value="Sally">Sally</option>
                                     <option value="Sue">Sue</option>
@@ -49,18 +47,18 @@
                             <tr>
                                 <td><label>Status </label></td>
                                 <td><select>
-                                    <option value="volvo">New</option>
-                                    <option value="saab">Pending</option>
-                                    <option value="mercedes">Completed</option>
-                                    <option value="audi">Removed</option>
+                                    <option value="New">New</option>
+                                    <option value="Pending">Pending</option>
+                                    <option value="Completed">Completed</option>
+                                    <option value="Removed">Removed</option>
                                 </select></td>
                             </tr>
                             <tr>
                                 <td><label>Priority </label></td>
                                 <td><select>
-                                    <option value="volvo">High</option>
-                                    <option value="saab">Med</option>
-                                    <option value="mercedes">Low</option>
+                                    <option value="High">High</option>
+                                    <option value="Med">Med</option>
+                                    <option value="Low">Low</option>
                                 </select></td>
                             </tr>
                             <tr>
@@ -98,34 +96,7 @@
                             <th>Header</th>
                             <th>Body</th>
                         </tr>
-                        <tr>
-                            <td>Fred</td>
-                            <td>New</td>
-                            <td>High</td>
-                            <td>This is a header</td>
-                            <td>This is the body</td>
-                        </tr>
-                        <tr>
-                            <td>Fred</td>
-                            <td>New</td>
-                            <td>High</td>
-                            <td>This is a header</td>
-                            <td>This is the body</td>
-                        </tr>
-                        <tr>
-                            <td>Fred</td>
-                            <td>New</td>
-                            <td>High</td>
-                            <td>This is a header</td>
-                            <td>This is the body</td>
-                        </tr>
-                        <tr>
-                            <td>Fred</td>
-                            <td>New</td>
-                            <td>High</td>
-                            <td>This is a header</td>
-                            <td>This is the body</td>
-                        </tr>
+
                     </table>
                     <br/><br/>
 
@@ -135,92 +106,16 @@
         </div>
     </section>
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="startup/common-files/js/jquery-1.10.2.min.js"></script>
-    <script src="startup/common-files/js/jquery.bxslider.min.js"></script>
-    <script src="startup/common-files/js/jquery.scrollTo-1.4.3.1-min.js"></script>
-    <script src="startup/common-files/js/jquery.sharrre.min.js"></script>
-    <script src="startup/flat-ui/js/bootstrap.min.js"></script>
-    <script src="startup/common-files/js/masonry.pkgd.min.js"></script>
-    <script src="startup/common-files/js/modernizr.custom.js"></script>
-    <script src="startup/common-files/js/page-transitions.js"></script>
-    <script src="startup/common-files/js/easing.min.js"></script>
-    <script src="startup/common-files/js/jquery.svg.js"></script>
-    <script src="startup/common-files/js/jquery.svganim.js"></script>
-    <script src="startup/common-files/js/jquery.backgroundvideo.min.js"></script>
-    <script src="startup/common-files/js/froogaloop.min.js"></script>
-    <script src="startup/common-files/js/startup-kit.js"></script>
-
+    <script src="js/jquery-1.10.2.min.js"></script>
+    <script src="js/jquery.bxslider.min.js"></script>
+    <script src="js/jquery.scrollTo-1.4.3.1-min.js"></script>
+    <script src="js/jquery.sharrre.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/masonry.pkgd.min.js"></script>
+    <script src="js/modernizr.custom.js"></script>
+    <script src="js/easing.min.js"></script>
+    <script src="js/jquery.svg.js"></script>
+    <script src="js/jquery.svganim.js"></script>
+    <script src="js/demo.js"></script>
 </div>
 </body>
-<script>
-
-    var datax = [
-        {
-            "ownerId": "fred",
-            "status": "New",
-            "priority": "Med",
-            "header": "Header",
-            "body": "body"
-        },
-        {
-            "ownerId": "fred",
-            "status": "New",
-            "priority": "Med",
-            "header": "Header",
-            "body": "body"
-        },
-        {
-            "ownerId": "fred",
-            "status": "New",
-            "priority": "Med",
-            "header": "Header",
-            "body": "body"
-        },
-        {
-            "ownerId": "fred",
-            "status": "New",
-            "priority": "Med",
-            "header": "Header",
-            "body": "body"
-        },
-        {
-            "ownerId": "fred",
-            "status": "New",
-            "priority": "Med",
-            "header": "Header",
-            "body": "body"
-        },
-        {
-            "ownerId": "fred",
-            "status": "New",
-            "priority": "Med",
-            "header": "Header",
-            "body": "body"
-        }
-    ];
-
-    function drawTable(data) {
-        for (var i = 0; i < data.length; i++) {
-            drawRow(data[i]);
-        }
-    }
-
-
-    function drawRow(rowData) {
-        var row = $("<tr />")
-        $("#jtable").append(row); //this will append tr element to table... keep its reference for a while since we will add cels into it
-        row.append($("<td>" + rowData.ownerId + "</td>"));
-        row.append($("<td>" + rowData.status + "</td>"));
-        row.append($("<td>" + rowData.priority + "</td>"));
-        row.append($("<td>" + rowData.header + "</td>"));
-        row.append($("<td>" + rowData.body + "</td>"));
-    }
-
-
-
-    drawTable(datax);
-
-
-
-
-</script>

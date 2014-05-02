@@ -5,42 +5,49 @@
     "use strict";
 
     var dao = require('./db');
-    var routes = require('./routes/status');
+    var routes = require('./routes/statusRouter');
     var security = require('./security');
-
-
+    var config = require('./config.json');
     var express = require('express');
     var logger = require('morgan');
-    var cookieParser = require('cookie-parser');
     var bodyParser = require('body-parser');
     var session = require('express-session');
     var mongoose = require('mongoose');
     var path = require('path');
     var favicon = require('static-favicon');
+    var jwt = require('jwt-simple');
 
     var app = express();
 
+    // Json Web Token
+    app.set('jwtTokenSecret', config.tokenKey);
 
 
     app.use(logger('dev'));
     app.use(bodyParser.json());
     app.use(bodyParser.urlencoded());
     app.use(express.static(path.join(__dirname, 'demo')));
-
-    // Create cookie session
-    app.use(cookieParser());
-    app.use(session({ secret: 'keyboard cat', cookie: { maxAge: 60000 }}));
+    app.use(favicon(__dirname + '/demo/images/favicon.ico'));
 
 
-    // Routes on '/status
-    //    Unix thinking Everything is a URI making GET a '<', PUT a '>' and POST a pipe '|'
+    // Request Json Web Token
+    app.get('/authenticate', routes.getToken);
+
+    // Insure user has been given token key
     app.use('/status', function (req, res, next) {
         security.authenticate(req, res, next);
     });
+
+    // Set Cross Origin Resource Sharing
+    app.use('/status', function(req, res, next) {
+        security.cors(req, res, next);
+
+    });
+
     app.put('/status', routes.create);   // brand new idempotent
     app.get('/status', routes.read);
     app.post('/status', routes.update);
-    app.delete('/status', routes.del);
+    app.delete('/status', routes.delete);
 
     // Route for demo
     if (app.get('env') === 'development') {
@@ -79,9 +86,5 @@
     });
 
     module.exports = app;
-
-
-
-
 
 })();
