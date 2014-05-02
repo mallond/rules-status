@@ -91,6 +91,7 @@ function put(data) {
         {
         },
         success: function(response) {
+            console.dir(response);
 
         },
         error: function(err) {

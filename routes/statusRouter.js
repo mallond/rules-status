@@ -58,18 +58,18 @@
 
         var decoded = jwt.decode(token, 'super secret 007');
 
-        res.json({ok: 1, delete: 1});
+        res.json({ok: 1, read: 1});
     };
 
     router.update = function (req, res) {
 
-        res.json({ok: 1, list: 1});
+        res.json({ok: 1, update: 1});
 
     };
 
     router.delete = function (req, res) {
 
-        res.json({ok: 1, list: 1});
+        res.json({ok: 1, delete: 1});
 
     };
 
