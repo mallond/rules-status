@@ -44,10 +44,10 @@
 
     });
 
-    app.put('/status', routes.create);   // brand new idempotent
-    app.get('/status', routes.read);
-    app.post('/status', routes.update);
-    app.delete('/status', routes.delete);
+    app.put('/status/create', routes.create);   // brand new idempotent
+    app.get('/status/read', routes.read);
+    app.post('/status/update', routes.update);
+    app.delete('/status/delete', routes.delete);
 
     // Route for demo
     if (app.get('env') === 'development') {

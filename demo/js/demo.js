@@ -82,7 +82,7 @@ function put(data) {
 
     $.ajax({
         type: "PUT",
-        url: "http://localhost:3000/status",
+        url: "http://localhost:3000/status/create",
         data: jdata,
         dataType: 'json',
         contentType: "application/json; charset=utf-8",

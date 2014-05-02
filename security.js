@@ -44,6 +44,9 @@
     };
 
     // User has already been authenticated - now he/she has a token to visit this site
+
+    // Did not want to use cookie based authentication - we would have to create a cookie for each unique path
+
     exports.getToken = function (req, res) {
 
         var name = req.query.name;
@@ -71,7 +74,7 @@
 
         } else {
 
-            res.send('Authentication error', 401)
+            res.send('Authentication error', 401);
         }
 
     };
