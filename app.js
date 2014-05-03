@@ -17,6 +17,12 @@
     var path = require('path');
     var favicon = require('static-favicon');
     var jwt = require('jwt-simple');
+    var Log =  require('log');
+
+    var log = new Log(config.logLevel);
+
+    log.info('Logger loaded. Logging level: '+ config.logLevel);
+    log.debug('Ready to Develop - debug mode set');
 
     var app = express();
 
