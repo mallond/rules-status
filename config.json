@@ -2,6 +2,7 @@
 {   "nodePort":3000,
     "db": {"host": "mongodb://localhost","port": "27017", "name": "bizrez"},
     "tokenKey": "super secret 007",
-    "logLevel": "debug"
+    "logLevel": "debug",
+    "tokenKeepAlive":1
 }
 

@@ -27,7 +27,7 @@
         if (isMatch) {
 
             // Great, user has successfully authenticated, so we can generate and send them a token.
-            var expires = moment().add('days', 1).valueOf();
+            var expires = moment().add('days', config.tokenKeepAlive).valueOf();
 
             var token = jwt.encode(
                 {
