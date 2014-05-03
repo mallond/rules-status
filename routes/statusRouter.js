@@ -1,4 +1,6 @@
-/*global require: false, module: false */
+//     http://www.bizrez.com
+//     (c) 2004-2014 David Mallon
+//     Freely distributed under the MIT license.
 
 /*global next: false, console: false*/
 
