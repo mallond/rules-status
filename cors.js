@@ -8,12 +8,8 @@ module.exports = function cors(req, res, next) {
 
     "use strict";
 
-    console.log('in the cors about to return inner function');
-
     return function cors(req, res, next) {
 
-        console.log('in the cors return');
-        console.log(req.headers.origin);
         res.header('Access-Control-Allow-Origin', req.headers.origin);
         res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
         res.header('Access-Control-Allow-Headers', 'Content-Type');
@@ -21,7 +17,6 @@ module.exports = function cors(req, res, next) {
         next();
 
     };
-
 
 };
 

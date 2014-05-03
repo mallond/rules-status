@@ -12,23 +12,14 @@
     var jwt = require('jwt-simple');
     var moment = require('moment');
     var config = require('./config.json');
-    var cors = require('./cors');
-
 
 
     exports.authenticate = function (req, res, next) {
 
-
         var token = req.body.token || req.query.token;
-
-        console.log(token);
-
         var decoded = jwt.decode(token, config.tokenKey);
 
-        console.log(decoded);
-
         if (token && decoded.iss) {
-            console.log('movin on');
             next();
         } else {
             res.end('Not authorized', 401);
@@ -43,8 +34,6 @@
     exports.getToken = function (req, res) {
 
         var name = req.query.name || req.body.name;
-
-        console.log(name);
 
 
         // Hack User always has a match - demo only

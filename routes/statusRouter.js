@@ -23,8 +23,6 @@
 
     router.create = function (req, res) {
 
-        console.log('in the create');
-
         new Status ({
 
             org: 'bizrez',
@@ -47,8 +45,7 @@
             deeplink: 'http://www.bizrez.com'
 
         }).save(function (err, assignment, count) {
-                //cors(req, res);
-                console.log('about to save');
+
                 if (err) return next(err);
                 res.json({ok: count, id: assignment._id});
             });

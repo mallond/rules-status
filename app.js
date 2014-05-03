@@ -23,7 +23,6 @@
     // Json Web Token
     app.set('jwtTokenSecret', config.tokenKey);
 
-
     app.use(logger('dev'));
     app.use(bodyParser.json());
     app.use(bodyParser.urlencoded());
@@ -40,7 +39,6 @@
     app.use('/status', function (req, res, next) {
         security.authenticate(req, res, next);
     });
-
 
     app.post('/status/create', routes.create);   // brand new idempotent
     app.get('/status/read', routes.read);
