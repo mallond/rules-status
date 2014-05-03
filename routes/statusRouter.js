@@ -7,7 +7,6 @@
     "use strict";
 
     var security = require('../security');
-    var cors = require('../cors');
     var express = require('express');
     var router = express.Router();
     var mongoose = require('mongoose');
