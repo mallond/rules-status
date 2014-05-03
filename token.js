@@ -12,29 +12,7 @@
     var jwt = require('jwt-simple');
     var moment = require('moment');
     var config = require('./config.json');
-    var cors = require('./cors');
 
-
-
-    exports.authenticate = function (req, res, next) {
-
-
-        var token = req.body.token || req.query.token;
-
-        console.log(token);
-
-        var decoded = jwt.decode(token, config.tokenKey);
-
-        console.log(decoded);
-
-        if (token && decoded.iss) {
-            console.log('movin on');
-            next();
-        } else {
-            res.end('Not authorized', 401);
-        }
-
-    };
 
     // User has already been authenticated - now he/she has a token to visit this site
 
@@ -42,10 +20,9 @@
 
     exports.getToken = function (req, res) {
 
-        var name = req.query.name || req.body.name;
+        console.log('getToken');
 
-        console.log(name);
-
+        var name = req.query.name;
 
         // Hack User always has a match - demo only
         var isMatch = true;
@@ -75,7 +52,7 @@
 
     };
 
-    console.log('security.js has been required');
+    console.log('token.js has been required');
 
 })();
 

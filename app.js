@@ -6,6 +6,7 @@
 
     var dao = require('./db');
     var routes = require('./routes/statusRouter');
+    var cors = require('./cors');
     var security = require('./security');
     var config = require('./config.json');
     var express = require('express');
@@ -29,6 +30,8 @@
     app.use(express.static(path.join(__dirname, 'demo')));
     app.use(favicon(__dirname + '/demo/images/favicon.ico'));
 
+    // Allow Cross-origin resource sharing
+    app.use(cors());
 
     // Request Json Web Token
     app.get('/authenticate', routes.getToken);
@@ -38,13 +41,8 @@
         security.authenticate(req, res, next);
     });
 
-    // Set Cross Origin Resource Sharing
-    app.use('/status', function(req, res, next) {
-        security.cors(req, res, next);
 
-    });
-
-    app.put('/status/create', routes.create);   // brand new idempotent
+    app.post('/status/create', routes.create);   // brand new idempotent
     app.get('/status/read', routes.read);
     app.post('/status/update', routes.update);
     app.delete('/status/delete', routes.delete);

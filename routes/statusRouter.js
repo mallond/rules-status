@@ -1,12 +1,13 @@
 /*global require: false, module: false */
 
-/*Global next: false, */
+/*global next: false, console: false*/
 
 (function () {
 
     "use strict";
 
     var security = require('../security');
+    var cors = require('../cors');
     var express = require('express');
     var router = express.Router();
     var mongoose = require('mongoose');
@@ -21,6 +22,8 @@
     };
 
     router.create = function (req, res) {
+
+        console.log('in the create');
 
         new Status ({
 
@@ -44,7 +47,8 @@
             deeplink: 'http://www.bizrez.com'
 
         }).save(function (err, assignment, count) {
-
+                //cors(req, res);
+                console.log('about to save');
                 if (err) return next(err);
                 res.json({ok: count, id: assignment._id});
             });
