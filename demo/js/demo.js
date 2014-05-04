@@ -3,51 +3,6 @@
 //     Freely distributed under the MIT license.
 
 
-var datax = [
-    {
-        "ownerId": "fred",
-        "status": "New",
-        "priority": "Med",
-        "header": "Header",
-        "body": "body"
-    },
-    {
-        "ownerId": "fred",
-        "status": "New",
-        "priority": "Med",
-        "header": "Header",
-        "body": "body"
-    },
-    {
-        "ownerId": "fred",
-        "status": "New",
-        "priority": "Med",
-        "header": "Header",
-        "body": "body"
-    },
-    {
-        "ownerId": "fred",
-        "status": "New",
-        "priority": "Med",
-        "header": "Header",
-        "body": "body"
-    },
-    {
-        "ownerId": "fred",
-        "status": "New",
-        "priority": "Med",
-        "header": "Header",
-        "body": "body"
-    },
-    {
-        "ownerId": "fred",
-        "status": "New",
-        "priority": "Med",
-        "header": "Header",
-        "body": "body"
-    }
-];
-
 function drawTable(data) {
     for (var i = 0; i < data.length; i++) {
         drawRow(data[i]);
@@ -61,13 +16,13 @@ function drawRow(rowData) {
     row.append($("<td>" + rowData.ownerId + "</td>"));
     row.append($("<td>" + rowData.status + "</td>"));
     row.append($("<td>" + rowData.priority + "</td>"));
-    row.append($("<td>" + rowData.header + "</td>"));
-    row.append($("<td>" + rowData.body + "</td>"));
+    row.append($("<td>" + rowData.headerDescription + "</td>"));
+    row.append($("<td>" + rowData.body.body + "</td>"));
 }
 
 
 
-function put(data) {
+function getList(data) {
 
     //curl -H "Content-Type: application/json" -b cookies.txt -c cookies.txt -X PUT -d '{"name":"john","password":"password"}' http://localhost:3000/status
 
@@ -82,16 +37,20 @@ function put(data) {
 
     $.ajax({
         type: "POST",
-        url: "http://localhost:3000/status/create",
+        url: "http://localhost:3000/status/read",
         data: jdata,
         dataType: 'json',
         contentType: "application/json; charset=utf-8",
         crossDomain: true,
         beforeSend: function (request)
         {
+            console.log('before send');
         },
         success: function(response) {
+            console.log('yahooo');
             console.dir(response);
+            drawTable(response);
+            //console.dir(response);
 
         },
         error: function(err) {
@@ -125,7 +84,7 @@ function getToken() {
             console.log('going to put the data');
             console.dir(response);
 
-            put(response);
+            getList(response);
 
 
         },
@@ -139,8 +98,6 @@ function getToken() {
 
 }
 
-
-drawTable(datax);
 
 getToken();
 

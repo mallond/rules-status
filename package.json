@@ -17,6 +17,7 @@
     "express-session":"1.0.3",
     "jwt-simple":"0.2.0",
       "moment":"2.6.0",
-      "log":"1.4.0"
+      "log":"1.4.0",
+      "mongoose-paginate":"2.2.0 "
   }
 }

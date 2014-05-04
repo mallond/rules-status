@@ -3,6 +3,7 @@
     "db": {"host": "mongodb://localhost","port": "27017", "name": "bizrez"},
     "tokenKey": "super secret 007",
     "logLevel": "debug",
-    "tokenKeepAlive":1
+    "tokenKeepAlive":1,
+    "pageSize": 15
 }
 

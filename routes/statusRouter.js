@@ -2,29 +2,56 @@
 //     (c) 2004-2014 David Mallon
 //     Freely distributed under the MIT license.
 
-/*global next: false, console: false*/
+/*global next: false, console: false, config: false, require: false*/
 
 (function () {
 
     "use strict";
 
     var security = require('../security');
+    var config = require('../config');
     var express = require('express');
     var router = express.Router();
     var mongoose = require('mongoose');
     var Status = mongoose.model('Status');
     var jwt = require('jwt-simple');
+    var mongoosePg = require('mongoose-paginate');
 
 
-    router.getToken = function(req, res) {
+    router.getToken = function (req, res) {
 
         security.getToken(req, res);
 
     };
 
+    var doPaginate = function(req, res, query, pageNumber) {
+
+
+        query = query || {};
+        pageNumber = pageNumber || 1;
+
+
+        Status.paginate(query, pageNumber, config.pageSize, function (error, pageCount, paginatedResults, itemCount) {
+            if (error) {
+                console.error(error);
+            } else {
+                res.json(paginatedResults);
+            }
+        });
+
+
+
+    };
+
+    router.paginate = function (req, res) {
+
+        doPaginate(req, res, {}, 1);
+
+    };
+
     router.create = function (req, res) {
 
-        new Status ({
+        new Status({
 
             org: 'bizrez',
             div: 'lasVegas',
@@ -55,10 +82,6 @@
 
 
     router.read = function (req, res) {
-
-        var token = req.body.token;
-
-        var decoded = jwt.decode(token, 'super secret 007');
 
         res.json({ok: 1, read: 1});
     };

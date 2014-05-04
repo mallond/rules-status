@@ -52,7 +52,7 @@
     });
 
     app.post('/status/create', routes.create);   // brand new idempotent
-    app.get('/status/read', routes.read);
+    app.post('/status/read', routes.paginate);
     app.post('/status/update', routes.update);
     app.delete('/status/delete', routes.delete);
 

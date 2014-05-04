@@ -41,6 +41,8 @@
 
     mongoose.model('Status', StatusSchema);
 
+
+
     // DB Connect
     var dbConnect = config.db.host+':'+config.db.port+'/'+config.db.name;
     mongoose.connect(dbConnect);
