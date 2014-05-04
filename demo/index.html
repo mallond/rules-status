@@ -26,10 +26,11 @@
         <a class="wide btn-wide" href="#">BizStatus Demo</a>
     </section>
 
-    <section class="content-1">
+    <section class="content-12">
         <div class="container">
             <div class="row">
                 <div class="col-sm-10">
+                    <br/><br/>
                     <h4>Insert Status</h4>
 
                     <form id="theForm">
@@ -89,20 +90,29 @@
                     <table style="width:600px" id="jtable">
 
                         <tr>
+                            <th colspan="3">
+                                <div class="pagination">
+                                    <ul>
+                                        <li class="previous" id="previous"><a href="#fakelink" class="fui-arrow-left"></a></li>
+                                        <li class="active" id="pageNumber"></li>
+                                        <li class="next" id="next"><a href="#fakelink" class="fui-arrow-right"></a></li>
+                                    </ul>
+                                </div>
+                            </th>
                             <th></th>
                             <th></th>
                             <th></th>
                             <th></th>
-                            <th></th>
-                            <th id="pageNumber"></th>
+
+
                         </tr>
                         <tr>
                             <th>Owner ID</th>
                             <th>Status</th>
                             <th>Priority</th>
                             <th>Header</th>
-                            <th>Header</th>
-                            <th>Body</th>
+                            <th>Detail</th>
+
                         </tr>
 
                     </table>

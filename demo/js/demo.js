@@ -105,19 +105,36 @@ var pageNumber = 1;
 
 var idiv = document.createElement('div');
 idiv.id = "page";
-idiv.innerHTML = "Page:"  + pageNumber.toString();
+idiv.innerHTML = "Page: "  + pageNumber.toString();
 
 
 $("#pageNumber").append(idiv);
 
-$( "#scrollResults" ).click(function() {
+
+
+$( "#next" ).click(function() {
 
     pageNumber = pageNumber + 1;
 
     $("#page").remove();
     var idiv = document.createElement('div');
     idiv.id = "page";
-    idiv.innerHTML = "Page:"  + pageNumber.toString();
+    idiv.innerHTML = "Page: "  + pageNumber.toString();
+    $("#pageNumber").append(idiv);
+
+    $("#jtable td").remove();
+    getToken(pageNumber);
+
+});
+
+$( "#previous" ).click(function() {
+
+    pageNumber = pageNumber - 1;
+
+    $("#page").remove();
+    var idiv = document.createElement('div');
+    idiv.id = "page";
+    idiv.innerHTML = "Page: "  + pageNumber.toString();
     $("#pageNumber").append(idiv);
 
     $("#jtable td").remove();
