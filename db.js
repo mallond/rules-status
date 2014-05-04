@@ -41,14 +41,12 @@
 
     mongoose.model('Status', StatusSchema);
 
-
-
     // DB Connect
     var dbConnect = config.db.host+':'+config.db.port+'/'+config.db.name;
     mongoose.connect(dbConnect);
+
     console.log('mongoose connected: '+ dbConnect);
     console.log('db.js has been required');
-
 
 })();
 

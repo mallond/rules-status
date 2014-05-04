@@ -4,20 +4,27 @@
 
 /*global console: false, module: false*/
 
-module.exports = function cors(req, res, next) {
+(function () {
 
     "use strict";
 
-    return function cors(req, res, next) {
+    module.exports = function cors(req, res, next) {
 
-        res.header('Access-Control-Allow-Origin', req.headers.origin);
-        res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
-        res.header('Access-Control-Allow-Headers', 'Content-Type');
 
-        next();
+        return function cors(req, res, next) {
+
+            res.header('Access-Control-Allow-Origin', req.headers.origin);
+            res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+            res.header('Access-Control-Allow-Headers', 'Content-Type');
+
+            next();
+
+        };
 
     };
 
-};
+    console.log('cors.js has been required');
+
+})();
 
 

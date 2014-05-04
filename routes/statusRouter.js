@@ -18,20 +18,24 @@
     var mongoosePg = require('mongoose-paginate');
 
 
+    // Return security token from Security
     router.getToken = function (req, res) {
 
         security.getToken(req, res);
 
     };
 
-    var doPaginate = function(req, res, query, pageNumber) {
+    // Authenticate request
+    router.authenticate = function(req, res, next) {
+        security.authenticate(req, res, next);
 
+    };
+
+    // Paginate list
+    var doPaginate = function(req, res, query, pageNumber) {
 
         query = query || {};
         pageNumber = pageNumber || 1;
-
-
-
 
         Status.paginate(query, pageNumber, config.pageSize, function (error, pageCount, paginatedResults, itemCount) {
             if (error) {
@@ -41,16 +45,16 @@
             }
         });
 
-
-
     };
 
+    // Router wrapper for paginate
     router.paginate = function (req, res) {
 
         doPaginate(req, res, {}, 1);
 
     };
 
+    // Create Status
     router.create = function (req, res) {
 
         new Status({
@@ -82,32 +86,27 @@
 
     };
 
-
+    // Read
     router.read = function (req, res) {
 
         res.json({ok: 1, read: 1});
     };
 
+    // Update
     router.update = function (req, res) {
 
         res.json({ok: 1, update: 1});
 
     };
 
+    // Delete
     router.delete = function (req, res) {
 
         res.json({ok: 1, delete: 1});
 
     };
 
-
-    router.demo = function (req, res) {
-
-        res.render('demo', { title: 'BizAssign Demo' });
-
-    };
-
-
+    // Export this module router
     module.exports = router;
 
     console.log('status.js has been required');

@@ -25,7 +25,6 @@
     var Log =  require('log');
 
     var log = new Log(config.logLevel);
-
     log.info('Logger loaded. Logging level: '+ config.logLevel);
     log.debug('Ready to Develop - debug mode set');
 
@@ -46,20 +45,12 @@
     // Request Json Web Token
     app.get('/authenticate', routes.getToken);
 
-    // Insure user has been given token key
-    app.use('/status', function (req, res, next) {
-        security.authenticate(req, res, next);
-    });
-
-    app.post('/status/create', routes.create);   // brand new idempotent
+    app.use('/status', routes.authenticate);
+    app.post('/status/create', routes.create);
     app.post('/status/read', routes.paginate);
     app.post('/status/update', routes.update);
     app.delete('/status/delete', routes.delete);
 
-    // Route for demo
-    if (app.get('env') === 'development') {
-        app.get('/demo', routes.demo);
-    }
 
     // catch 404 and forwarding to error handler
     app.use(function (req, res, next) {
