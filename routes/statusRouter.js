@@ -31,6 +31,8 @@
         pageNumber = pageNumber || 1;
 
 
+
+
         Status.paginate(query, pageNumber, config.pageSize, function (error, pageCount, paginatedResults, itemCount) {
             if (error) {
                 console.error(error);

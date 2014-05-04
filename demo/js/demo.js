@@ -22,7 +22,7 @@ function drawRow(rowData) {
 
 
 
-function getList(data) {
+function getList(data, pageNumber) {
 
     //curl -H "Content-Type: application/json" -b cookies.txt -c cookies.txt -X PUT -d '{"name":"john","password":"password"}' http://localhost:3000/status
 
@@ -30,6 +30,7 @@ function getList(data) {
 
     //$.toJSON(myObj);
     data.name = 'mary';
+    data.pageNumber = pageNumber;
 
     var jdata = JSON.stringify(data);
     console.log(jdata);
@@ -50,6 +51,7 @@ function getList(data) {
             console.log('yahooo');
             console.dir(response);
             drawTable(response);
+            pageNumber=pageNumber + 1;
             //console.dir(response);
 
         },
@@ -61,7 +63,7 @@ function getList(data) {
 
 }
 
-function getToken() {
+function getToken(pageNumber) {
 
 
 
@@ -83,8 +85,9 @@ function getToken() {
             console.log('success');
             console.log('going to put the data');
             console.dir(response);
+            console.log('pageNumber:'+ pageNumber);
 
-            getList(response);
+            getList(response, pageNumber);
 
 
         },
@@ -98,8 +101,35 @@ function getToken() {
 
 }
 
+var pageNumber = 1;
 
-getToken();
+var idiv = document.createElement('div');
+idiv.id = "page";
+idiv.innerHTML = "Page:"  + pageNumber.toString();
+
+
+$("#pageNumber").append(idiv);
+
+$( "#scrollResults" ).click(function() {
+
+    pageNumber = pageNumber + 1;
+
+    $("#page").remove();
+    var idiv = document.createElement('div');
+    idiv.id = "page";
+    idiv.innerHTML = "Page:"  + pageNumber.toString();
+    $("#pageNumber").append(idiv);
+
+    $("#jtable td").remove();
+    getToken(pageNumber);
+
+});
+
+
+
+getToken(pageNumber);
+
+
 
 
 
