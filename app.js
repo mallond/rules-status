@@ -17,7 +17,6 @@
     var express = require('express');
     var logger = require('morgan');
     var bodyParser = require('body-parser');
-    var session = require('express-session');
     var mongoose = require('mongoose');
     var path = require('path');
     var favicon = require('static-favicon');
@@ -58,8 +57,6 @@
         err.status = 404;
         next(err);
     });
-
-    // error handlers
 
     // development error handler
     // will print stacktrace
