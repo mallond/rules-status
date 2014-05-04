@@ -117,8 +117,17 @@
 
     });
 
+    $("#create").click(function () {
+
+       $.jnotify('Item Added ', 1000);
+
+    });
+
 
     getToken(pageNumber);
+
+    $.jnotify('Demo Loaded ', 1000);
+    $.jnotify('Time to just Do it! ', 2000);
 
 })();
 

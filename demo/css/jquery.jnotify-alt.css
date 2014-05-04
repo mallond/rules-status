@@ -1,0 +1,87 @@
+div.jnotify-container {
+	position: fixed; 
+	top: 0; 
+	right: 0; 
+	width: 400px; 
+	z-index: 100000;
+	
+	/* set maximum number of notes to show */
+	max-height: 270px;
+	overflow-x: hidden;
+	overflow-y: auto;
+}
+
+div.jnotify-container div.jnotify-notification {
+	position: relative; 
+	margin-bottom: 5px;
+}
+
+div.jnotify-container div.jnotify-notification div.jnotify-background {
+	position: absolute; 
+	top: 0; 
+	left: 0; 
+	width: 100%; 
+	height: 100%;
+	background-color: #4c4c4c; 
+	filter: alpha(opacity=90); 
+	-moz-opacity: 0.90; 
+	opacity: 0.90; 
+	z-index: 1; 
+
+	/* round the corners */
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	border-radius: 10px;
+}
+
+div.jnotify-container div.jnotify-notification a.jnotify-close,
+div.jnotify-container div.jnotify-notification a.jnotify-close:link,
+div.jnotify-container div.jnotify-notification a.jnotify-close:visited,
+div.jnotify-container div.jnotify-notification a.jnotify-close:focus,
+div.jnotify-container div.jnotify-notification a.jnotify-close:hover {
+	position: absolute;
+	top: 2px;
+	right: 5px;
+	padding: 0 5px;
+	font: bold 1.4em Verdana,Arial,Helvetica,sans-serif;
+	line-height: 1em;
+	color: #fff;
+	text-decoration: none;
+	z-index: 3;
+	cursor: pointer;
+}
+
+div.jnotify-container div.jnotify-notification div.jnotify-message {
+	position: relative; 
+	z-index: 2; 
+	padding: 20px;
+	text-align: left;
+	color: #fff;
+	font: bold 1.4em Verdana,Arial,Helvetica,sans-serif;
+	line-height: 1.2em; 
+}
+
+div.jnotify-container div.jnotify-notification div.jnotify-message * {
+	font: inherit;
+	font-size: 1em;
+}
+
+/* notification type == "error" */
+div.jnotify-container div.jnotify-notification-error div.jnotify-background {
+	background-color: #e4abb9; 
+}
+
+div.jnotify-container div.jnotify-notification-error a.jnotify-close,
+div.jnotify-container div.jnotify-notification-error div.jnotify-message {
+	color: #a72947 !important;
+}
+
+/* notification type == "warning" */
+div.jnotify-container div.jnotify-notification-warning div.jnotify-background {
+	background-color: #fff7d1; 
+}
+
+div.jnotify-container div.jnotify-notification-warning a.jnotify-close,
+div.jnotify-container div.jnotify-notification-warning div.jnotify-message {
+	color: #c2a928 !important;
+}
