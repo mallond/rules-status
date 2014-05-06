@@ -2,14 +2,15 @@
 //     (c) 2004-2014 David Mallon
 //     Freely distributed under the MIT license.
 
-/*global next: false, console: false, config: false, require: false*/
+/*global module: false,  next: false, console: false, config: false, require: false*/
 
 (function () {
 
     "use strict";
 
-    var security = require('../security');
+    var security = require('../security/security');
     var config = require('../config');
+    var action = require('../db/action');
     var express = require('express');
     var router = express.Router();
     var mongoose = require('mongoose');
@@ -31,58 +32,21 @@
 
     };
 
-    // Paginate list
-    var doPaginate = function(req, res, query, pageNumber) {
-
-        query = query || {};
-        pageNumber = pageNumber || 1;
-
-        Status.paginate(query, pageNumber, config.pageSize, function (error, pageCount, paginatedResults, itemCount) {
-            if (error) {
-                console.error(error);
-            } else {
-                res.json(paginatedResults);
-            }
-        });
-
-    };
 
     // Router wrapper for paginate
     router.paginate = function (req, res) {
 
-        doPaginate(req, res, {}, 1);
+        //doPaginate(req, res, {}, 1);
+        action.statusPaginate(req, res, {}, 1);
 
     };
 
     // Create Status
     router.create = function (req, res) {
 
-        new Status({
-
-            org: 'bizrez',
-            div: 'lasVegas',
-            unit: 'dev',
-            ownerId: 'John',
-            isPerson: true,
-            assignmentType: 'Task',
-            status: 'New',
-            statusInfo: 'Testing this ',
-            priority: 1,   // 0 - 100
-            createDate: Date.now(),
-            completionDate: Date.now(),
-            goalDate: Date.now(),
-            deadlineDate: Date.now(),
-            header: {header: 1},
-            headerDescription: 'Testing this header',
-            body: {body: 1},
-            bodyDescription: 'Testing this body',
-            deeplink: 'http://www.bizrez.com'
-
-        }).save(function (err, assignment, count) {
-
-                if (err) return next(err);
-                res.json({ok: count, id: assignment._id});
-            });
+        //create status
+        console.log('create to begin');
+        //action.statusCreate(req, res);
 
     };
 

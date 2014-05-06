@@ -25,8 +25,37 @@
         row.append($("<td>" + rowData.body.body + "</td>"));
     }
 
+    function create(data, pageNumber) {
+
+        data.name = 'mary';
+        data.pageNumber = pageNumber;
+
+        var jdata = JSON.stringify(data);
+
+        $.ajax({
+            type: "POST",
+            url: "http://localhost:3000/status/create",
+            data: jdata,
+            dataType: 'json',
+            contentType: "application/json; charset=utf-8",
+            crossDomain: true,
+            beforeSend: function (request) {
+            },
+            success: function (response) {
+                drawTable(response);
+                pageNumber = pageNumber + 1;
+            },
+            error: function (err) {
+                // Todo
+            }
+        });
+
+
+    }
 
     function getList(data, pageNumber) {
+
+        pageNumber = pageNumber + 1;
 
         data.name = 'mary';
         data.pageNumber = pageNumber;
@@ -43,6 +72,7 @@
             beforeSend: function (request) {
             },
             success: function (response) {
+                console.dir(response);
                 drawTable(response);
                 pageNumber = pageNumber + 1;
             },
@@ -50,6 +80,30 @@
                 // Todo
             }
         });
+
+    }
+
+    function authenticateCall(pageNumber, callback) {
+
+        var name = {"name": "mary"};
+
+        $.ajax({
+            type: "GET",
+            url: "http://localhost:3000/authenticate",
+            data: name,
+            dataType: 'json',
+            contentType: "application/json; charset=utf-8",
+            crossDomain: true,
+            beforeSend: function (request) {
+            },
+            success: function (response) {
+                callback(response, pageNumber);
+            },
+            error: function (err) {
+                //todo
+            }
+        });
+
 
 
     }
@@ -98,7 +152,8 @@
         $("#pageNumber").append(idiv);
 
         $("#jtable td").remove();
-        getToken(pageNumber);
+        //getToken(pageNumber);
+        authenticateCall(pageNumber, getList);
 
     });
 
@@ -113,18 +168,22 @@
         $("#pageNumber").append(idiv);
 
         $("#jtable td").remove();
-        getToken(pageNumber);
+        //getToken(pageNumber);
+        authenticateCall(pageNumber, getList);
 
     });
 
     $("#create").click(function () {
 
        $.jnotify('Item Added ', 1000);
+       authenticateCall(pageNumber, create);
 
     });
 
 
-    getToken(pageNumber);
+    //getToken(pageNumber);
+
+    authenticateCall(pageNumber, getList);
 
     $.jnotify('Demo Loaded ', 1000);
     $.jnotify('Time to just Do it! ', 2000);

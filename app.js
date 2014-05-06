@@ -9,10 +9,10 @@
 
     "use strict";
 
-    var dao = require('./db');
+    var dao = require('./db/db');
     var routes = require('./routes/statusRouter');
-    var cors = require('./cors');
-    var security = require('./security');
+    var cors = require('./security/cors');
+    var security = require('./security/security');
     var config = require('./config.json');
     var express = require('express');
     var logger = require('morgan');

@@ -11,7 +11,7 @@
 
     var jwt = require('jwt-simple');
     var moment = require('moment');
-    var config = require('./config.json');
+    var config = require('./../config.json');
 
 
     exports.authenticate = function (req, res, next) {
