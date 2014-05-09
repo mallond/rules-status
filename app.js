@@ -32,11 +32,17 @@
     // Json Web Token
     app.set('jwtTokenSecret', config.tokenKey);
 
+    // Disable
+    app.disable('x-powered-by');
+
+
     app.use(logger('dev'));
     app.use(bodyParser.json());
     app.use(bodyParser.urlencoded());
     app.use(express.static(path.join(__dirname, 'demo')));
     app.use(favicon(__dirname + '/demo/images/favicon.ico'));
+
+
 
     // Allow Cross-origin resource sharing
     app.use(cors());

@@ -14,10 +14,16 @@
         return function cors(req, res, next) {
 
             res.header('Access-Control-Allow-Origin', req.headers.origin);
-            res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
-            res.header('Access-Control-Allow-Headers', 'Content-Type');
+            res.header('Access-Control-Allow-Methods', 'GET, PUT, OPTIONS');
+            res.header('Access-Control-Allow-Headers', 'Content-Type, Accept');
 
-            next();
+            // Intercept OPTIONS method
+            if (req.method === 'OPTIONS') {
+                res.send(200);
+            }
+            else {
+                next();
+            }
 
         };
 

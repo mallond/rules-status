@@ -2,7 +2,7 @@
 //     (c) 2004-2014 David Mallon
 //     Freely distributed under the MIT license.
 
-/*global require: false, module: false, exports: false, console: false*/
+/*global require: false, module: false, exports: false, console: false, next: false*/
 
 
 (function() {
@@ -33,7 +33,7 @@
     };
 
     // Create
-    exports.statusCreate = function(data, req, res) {
+    exports.statusCreate = function(data, req, res, next) {
 
         new Status({
 
@@ -58,8 +58,13 @@
 
         }).save(function (err, assignment, count) {
 
-                if (err) return next(err);
+                console.log(assignment);
+
+
+                if (err) {return next(err);}
+
                 res.json({ok: count, id: assignment._id});
+
             });
     };
 

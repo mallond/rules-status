@@ -47,8 +47,6 @@
         var data = req.query.body || req.body;
 
         //create status
-        console.log('create to begin');
-        console.dir(data);
         action.statusCreate(data, req, res);
 
     };
