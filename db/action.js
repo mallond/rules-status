@@ -45,21 +45,18 @@
             assignmentType: 'Task',
             status: data.status,
             statusInfo: 'Testing this ',
-            priority: 1,   // 0 - 100
+            priority: data.priority,   // 0 - 100
             createDate: Date.now(),
             completionDate: Date.now(),
             goalDate: Date.now(),
             deadlineDate: Date.now(),
             header: {header: data.header},
-            headerDescription: 'Testing this header',
+            headerDescription: data.header,
             body: {body: data.body},
             bodyDescription: 'Testing this body',
             deeplink: 'http://www.bizrez.com'
 
         }).save(function (err, assignment, count) {
-
-                console.log(assignment);
-
 
                 if (err) {return next(err);}
 
@@ -67,6 +64,8 @@
 
             });
     };
+
+    // Purge collection db.collection.drop() use CLI
 
 
 

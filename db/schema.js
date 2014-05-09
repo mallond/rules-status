@@ -26,7 +26,7 @@
         assignmentType: {type: String, required: true}, // Work, Process, Task, Log, ...
         status: { type: String, required: true },       // New, Open, Closed, Removed
         statusInfo: String,                             // General Hints
-        priority: { type: Number, min: 0, max: 100 },   // 0 - 100
+        priority: { type: String, required: true },   // 0 - 100
         createDate: { type: Date, default: Date.now },   // Creation Date
         completionDate: Date,                           // Completion Date
         goalDate: { type: Date, default: Date.now },    // Goal Date
