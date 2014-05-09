@@ -2,11 +2,26 @@
 //     (c) 2004-2014 David Mallon
 //     Freely distributed under the MIT license.
 
-/*global $: false*/
+/*global $: false, console: false*/
 
 (function () {
 
+
     "use strict";
+
+    var credentials = "";
+
+    function setCredentials(cred) {
+
+        credentials = cred;
+
+    }
+
+    function getCredentials() {
+
+        return credentials;
+
+    }
 
     function drawTable(data) {
         for (var i = 0; i < data.length; i++) {
@@ -29,6 +44,12 @@
 
         data.name = 'mary';
         data.pageNumber = pageNumber;
+        data.token = getCredentials();
+        data.user = $('#userSelected').val();
+        data.status = $('#statusSelected').val();
+        data.priority = $('#prioritySelected').val();
+        data.header = $('#header').val();
+        data.body = $('#body').val();
 
         var jdata = JSON.stringify(data);
 
@@ -50,13 +71,14 @@
             }
         });
 
-
     }
 
-    function getList(data, pageNumber) {
+    function getList(pageNumber) {
 
         pageNumber = pageNumber + 1;
 
+        var data = {};
+        data.token = getCredentials();
         data.name = 'mary';
         data.pageNumber = pageNumber;
 
@@ -83,7 +105,7 @@
 
     }
 
-    function authenticateCall(pageNumber, callback) {
+    function authenticate(callback) {
 
         var name = {"name": "mary"};
 
@@ -97,32 +119,12 @@
             beforeSend: function (request) {
             },
             success: function (response) {
-                callback(response, pageNumber);
-            },
-            error: function (err) {
-                //todo
-            }
-        });
 
-
-
-    }
-
-    function getToken(pageNumber) {
-
-        var name = {"name": "mary"};
-
-        $.ajax({
-            type: "GET",
-            url: "http://localhost:3000/authenticate",
-            data: name,
-            dataType: 'json',
-            contentType: "application/json; charset=utf-8",
-            crossDomain: true,
-            beforeSend: function (request) {
-            },
-            success: function (response) {
-                getList(response, pageNumber);
+                console.log('gettoken success:'+ response.token);
+                setCredentials(response.token);
+                callback();
+                //return response.token;
+                //getList(response, pageNumber);
             },
             error: function (err) {
                 //todo
@@ -137,9 +139,7 @@
     idiv.id = "page";
     idiv.innerHTML = "Page: " + pageNumber.toString();
 
-
     $("#pageNumber").append(idiv);
-
 
     $("#next").click(function () {
 
@@ -150,40 +150,33 @@
         idiv.id = "page";
         idiv.innerHTML = "Page: " + pageNumber.toString();
         $("#pageNumber").append(idiv);
-
         $("#jtable td").remove();
-        //getToken(pageNumber);
-        authenticateCall(pageNumber, getList);
+        getList(pageNumber);
 
     });
 
     $("#previous").click(function () {
 
         pageNumber = pageNumber - 1;
-
         $("#page").remove();
         var idiv = document.createElement('div');
         idiv.id = "page";
         idiv.innerHTML = "Page: " + pageNumber.toString();
         $("#pageNumber").append(idiv);
-
         $("#jtable td").remove();
-        //getToken(pageNumber);
-        authenticateCall(pageNumber, getList);
+        getList(pageNumber);
 
     });
 
     $("#create").click(function () {
 
        $.jnotify('Item Added ', 1000);
-       authenticateCall(pageNumber, create);
+       var data = {};
+       create(data, pageNumber);
 
     });
 
-
-    //getToken(pageNumber);
-
-    authenticateCall(pageNumber, getList);
+    authenticate(getList);
 
     $.jnotify('Demo Loaded ', 1000);
     $.jnotify('Time to just Do it! ', 2000);

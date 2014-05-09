@@ -44,9 +44,12 @@
     // Create Status
     router.create = function (req, res) {
 
+        var data = req.query.body || req.body;
+
         //create status
         console.log('create to begin');
-        //action.statusCreate(req, res);
+        console.dir(data);
+        action.statusCreate(data, req, res);
 
     };
 

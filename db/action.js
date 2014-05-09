@@ -33,26 +33,26 @@
     };
 
     // Create
-    exports.statusCreate = function(req, res) {
+    exports.statusCreate = function(data, req, res) {
 
         new Status({
 
             org: 'bizrez',
             div: 'lasVegas',
             unit: 'dev',
-            ownerId: 'John',
+            ownerId: data.user,
             isPerson: true,
             assignmentType: 'Task',
-            status: 'New',
+            status: data.status,
             statusInfo: 'Testing this ',
             priority: 1,   // 0 - 100
             createDate: Date.now(),
             completionDate: Date.now(),
             goalDate: Date.now(),
             deadlineDate: Date.now(),
-            header: {header: 1},
+            header: {header: data.header},
             headerDescription: 'Testing this header',
-            body: {body: 1},
+            body: {body: data.body},
             bodyDescription: 'Testing this body',
             deeplink: 'http://www.bizrez.com'
 
