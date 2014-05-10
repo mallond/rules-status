@@ -65,7 +65,22 @@
             });
     };
 
-    // Purge collection db.collection.drop() use CLI
+    exports.statusRead = function(data, req, res, next) {
+
+        console.log('read');
+
+    };
+
+    exports.statusUpdate = function(data, req, res, next) {
+
+        console.log('updated');
+    };
+
+    exports.statusDelete = function(data, req, res, next) {
+
+        console.log('deleted');
+
+    };
 
 
 

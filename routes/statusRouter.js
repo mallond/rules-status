@@ -54,11 +54,15 @@
     // Read
     router.read = function (req, res) {
 
+        action.statusRead(data, req, res);
+
         res.json({ok: 1, read: 1});
     };
 
     // Update
     router.update = function (req, res) {
+
+        action.statusUpdate(data, req, res);
 
         res.json({ok: 1, update: 1});
 
@@ -66,6 +70,8 @@
 
     // Delete
     router.delete = function (req, res) {
+
+        action.statusDelete(data, req, res);
 
         res.json({ok: 1, delete: 1});
 
