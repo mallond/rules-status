@@ -26,7 +26,12 @@
             if (error) {
                 console.error(error);
             } else {
-                res.json(paginatedResults);
+                var data = {};
+                data.paginatedResults = paginatedResults;
+                data.itemCount = itemCount;
+                res.json(data);
+
+                //res.json(paginatedResults);
             }
         });
 

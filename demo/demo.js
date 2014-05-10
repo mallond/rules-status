@@ -11,6 +11,8 @@
 
     var credentials = "";
     var pageNumber = 1;
+    var itemCount = 0;
+    var pageSize = 10;
 
     function getPageNumber() {
 
@@ -19,6 +21,14 @@
 
     function setPageNumber(pageNum) {
         pageNumber = pageNum;
+    }
+
+    function setItemCount(count) {
+        itemCount = count;
+    }
+
+    function getItemCount() {
+        return itemCount;
     }
 
     function setCredentials(cred) {
@@ -48,6 +58,7 @@
         row.append($("<td>" + rowData.priority + "</td>"));
         row.append($("<td>" + rowData.headerDescription + "</td>"));
         row.append($("<td>" + rowData.body.body + "</td>"));
+        row.append($("<td class='hidden'>" + rowData._id + "</td>"));
     }
 
     function create(data, pageNumber) {
@@ -104,8 +115,10 @@
             beforeSend: function (request) {
             },
             success: function (response) {
+                setItemCount(response.itemCount);
                 console.dir(response);
-                drawTable(response);
+                console.log("ItemCount:" + itemCount);
+                drawTable(response.paginatedResults);
 
             },
             error: function (err) {
@@ -169,6 +182,10 @@
 
         setPageNumber(getPageNumber()-1);
         var pgn = getPageNumber();
+
+        if (pgn<1) {
+            pgn = 1;
+        }
 
         $("#page").remove();
         var idiv = document.createElement('div');
