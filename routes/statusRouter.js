@@ -36,8 +36,10 @@
     // Router wrapper for paginate
     router.paginate = function (req, res) {
 
+        var data = req.query.body || req.body;
+
         //doPaginate(req, res, {}, 1);
-        action.statusPaginate(req, res, {}, 1);
+        action.statusPaginate(req, res, {}, data.pageNumber);
 
     };
 
@@ -71,7 +73,7 @@
     // Delete
     router.delete = function (req, res) {
 
-        action.statusDelete(data, req, res);
+
 
         res.json({ok: 1, delete: 1});
 

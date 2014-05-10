@@ -10,6 +10,16 @@
     "use strict";
 
     var credentials = "";
+    var pageNumber = 1;
+
+    function getPageNumber() {
+
+        return pageNumber;
+    }
+
+    function setPageNumber(pageNum) {
+        pageNumber = pageNum;
+    }
 
     function setCredentials(cred) {
 
@@ -73,9 +83,9 @@
 
     }
 
-    function getList(pageNumber) {
+    function getList() {
 
-        pageNumber = pageNumber + 1;
+        pageNumber = getPageNumber();
 
         var data = {};
         data.token = getCredentials();
@@ -96,7 +106,7 @@
             success: function (response) {
                 console.dir(response);
                 drawTable(response);
-                pageNumber = pageNumber + 1;
+
             },
             error: function (err) {
                 // Todo
@@ -133,7 +143,6 @@
 
     }
 
-    var pageNumber = 1;
 
     var idiv = document.createElement('div');
     idiv.id = "page";
@@ -143,28 +152,31 @@
 
     $("#next").click(function () {
 
-        pageNumber = pageNumber + 1;
+        setPageNumber(getPageNumber()+1);
+        var pgn = getPageNumber();
 
         $("#page").remove();
         var idiv = document.createElement('div');
         idiv.id = "page";
-        idiv.innerHTML = "Page: " + pageNumber.toString();
+        idiv.innerHTML = "Page: " + pgn.toString();
         $("#pageNumber").append(idiv);
         $("#jtable td").remove();
-        getList(pageNumber);
+        getList();
 
     });
 
     $("#previous").click(function () {
 
-        pageNumber = pageNumber - 1;
+        setPageNumber(getPageNumber()-1);
+        var pgn = getPageNumber();
+
         $("#page").remove();
         var idiv = document.createElement('div');
         idiv.id = "page";
-        idiv.innerHTML = "Page: " + pageNumber.toString();
+        idiv.innerHTML = "Page: " + pgn.toString();
         $("#pageNumber").append(idiv);
         $("#jtable td").remove();
-        getList(pageNumber);
+        getList();
 
     });
 
@@ -176,6 +188,23 @@
 
     });
 
+    $("#update").click(function () {
+
+        $.jnotify('Item Updated ', 1000);
+        var data = {};
+
+
+    });
+
+    $("#delete").click(function () {
+
+        $.jnotify('Item Deleted ', 1000);
+        var data = {};
+
+
+    });
+
+    setPageNumber(1);
     authenticate(getList);
 
     $.jnotify('Demo Loaded ', 1000);
