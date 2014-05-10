@@ -48,6 +48,7 @@
 
         var data = req.query.body || req.body;
 
+
         //create status
         action.statusCreate(data, req, res);
 
