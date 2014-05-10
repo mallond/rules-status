@@ -58,7 +58,7 @@
         row.append($("<td>" + rowData.priority + "</td>"));
         row.append($("<td>" + rowData.headerDescription + "</td>"));
         row.append($("<td>" + rowData.body.body + "</td>"));
-        row.append($("<td class='hidden'>" + rowData._id + "</td>"));
+        row.append($("<td>" + rowData._id + "</td>"));
     }
 
     function create(data, pageNumber) {
@@ -226,6 +226,10 @@
 
     $.jnotify('Demo Loaded ', 1000);
     $.jnotify('Time to just Do it! ', 2000);
+
+
+    // Switch
+    $("[data-toggle='switch']").wrap('<div class="switch" />').parent().bootstrapSwitch();
 
 })();
 
