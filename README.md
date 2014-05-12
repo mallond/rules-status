@@ -55,7 +55,7 @@ Schema:
 - Type				    Type = Work (for this Use Case)
 - Status				[New, Pending, Completed, Withdrawn]
 - Status Information	[Short description of status]
-- Priority			    [Low, Medium, High, Top]
+- Priority			    [0 - 100]
 - Child process			Array of dependent statuses
 - Create Date			Create Date
 - Completion Date		Completion Date

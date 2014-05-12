@@ -26,8 +26,8 @@
         assignmentType: {type: String, required: true}, // Work, Process, Task, Log, ...
         status: { type: String, required: true },       // New, Open, Closed, Removed
         statusInfo: String,                             // General Hints
-        priority: { type: String, required: true },   // 0 - 100
-        createDate: { type: Date, default: Date.now },   // Creation Date
+        priority: { type: String, required: true },     // 0 - 100
+        createDate: { type: Date, default: Date.now },  // Creation Date
         completionDate: Date,                           // Completion Date
         goalDate: { type: Date, default: Date.now },    // Goal Date
         deadlineDate: { type: Date, default: Date.now },// Deadline Date
@@ -36,6 +36,14 @@
         body: Schema.Types.Mixed,                       // Body detail
         bodyDescription: String,                        // Body description
         deeplink: String                                // Deep Link to a page, url, application, view, ...
+
+    });
+
+    var TokenSchema =  new Schema({
+
+        token: {type: String, required: true},
+        userId: {type: String, require: true},
+        refererUrl: {type: String, required: true}
 
     });
 
