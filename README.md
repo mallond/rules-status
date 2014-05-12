@@ -2,9 +2,22 @@
 
 A dynamic Document Object Model B-Tree indexed based Status Engine.
 Simplistically designed to accommodate different domain models by extending the base schema.
-Scalable Vertically in a Big Data fashion, using MongoDB as the main driver for peta byte
+Scalable vertically in a Big Data fashion, using MongoDB as the main driver for peta byte
 organic growth. B-Tree efficient for access, as speed is a requirement. Light dynamic Document
-Object model for differing Business Domain Solutions.
+Object model for differing Business Domain Solutions. Pragmatic.
+
+"End in Mind" - Stephen Covey
+What needs to be measured,
+Who needs to be measured,
+Why it needs to be measured,
+Who is the audience.
+
+In the old days of Data Processing, the end in mind was always the main onus on design.
+You could say the "Report is King." Somewhere, the UI got all the fan fare. And
+people just forgot what is important. I belive that Data Processing is back
+with a vengence, and this little language called JavaScript, along with a very Data
+Processing centric DB, called MongoDB, will take back the effecencies, and the
+reason that Buesiness need Pragmatic Soutions.
 
 
 Types of Status:
@@ -78,8 +91,6 @@ MongoDB
        "log": "1.4.0",
        "mongoose-paginate": "2.2.0 ",
        "mocha": "1.18.2"
-
-
 
 
 ## CRUD a few CURL Examples
