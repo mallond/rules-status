@@ -12,12 +12,13 @@ Who needs to be measured,
 Why it needs to be measured,
 Who is the audience.
 
-In the old days of Data Processing, the end in mind was always the main onus on design.
-You could say the "Report is King." Somewhere, the UI got all the fan fare. And
-people just forgot what is important. I belive that Data Processing is back
-with a vengence, and this little language called JavaScript, along with a very Data
-Processing centric DB, called MongoDB, will take back the effecencies, and the
-reason that Buesiness need Pragmatic Soutions.
+In the old days of Data Processing, the end in mind was always the main reason for the design - how can
+I say... reporting. You could say the "Report was King." Somewhere, and somehow, the UI got all the fan fare and "UI is King."  And
+mindset swept the Business Analyst focus. A Most human, we all want to be sexy, and no doubt, that
+the UI is the sexiest part of what the end user sees. But there is more beyond sex appeal and fashion.
+People just forgot what is important. I believe that Data Processing is back
+with a vengeance, and this little language called JavaScript, along with a very Data
+Processing centric DB, called MongoDB, will take back the efficiencies.
 
 
 Types of Status:
@@ -116,7 +117,10 @@ Step two: Use token for all rest service calls
 - curl -H "Content-Type: application/json" -X DELETE -d '{add token from authenticate}' http://localhost:3000/status/delete
 
 
+Now, to go on and sell this to the managers that need the information. As I stated earlier, that the UI was
+the sexy part of an application. This pattern can be embded in the sexiest of applications. Good Cheer.
 
+Status of this Project: Scaffold work in process version 0.0.0 (version 0)
 
 
 
