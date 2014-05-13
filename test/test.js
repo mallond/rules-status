@@ -7,8 +7,6 @@
 var assert = require("assert");
 
 
-
-
 (function () {
 
     "use strict";
@@ -24,7 +22,7 @@ var assert = require("assert");
             });
         });
 
-        describe('Create Test', function () {
+        describe('Create Test with Token', function () {
 
             it('should return mongo id', function () {
 
@@ -33,7 +31,7 @@ var assert = require("assert");
             });
         });
 
-        describe('Read Test', function () {
+        describe('Read Test with Token', function () {
 
             it('should return {ok:1, json_result}', function () {
 
@@ -42,7 +40,7 @@ var assert = require("assert");
             });
         });
 
-        describe('Update Test', function () {
+        describe('Update Test with Token', function () {
 
             it('should return {ok:1}', function () {
 
@@ -51,7 +49,7 @@ var assert = require("assert");
             });
         });
 
-        describe('Delete Test', function () {
+        describe('Delete Test with Token', function () {
 
             it('should return {ok:1}', function () {
 
@@ -60,7 +58,7 @@ var assert = require("assert");
             });
         });
 
-        describe('List Test', function () {
+        describe('List Test with Token', function () {
 
             it('should return {ok:1, JsonList}', function () {
 
@@ -71,7 +69,7 @@ var assert = require("assert");
 
         describe('Create Test No Token', function () {
 
-            it('should return mongo id', function () {
+            it('should return {ok:0, error:noToken}', function () {
 
                 assert.strictEqual(true, true);
 
@@ -80,7 +78,7 @@ var assert = require("assert");
 
         describe('Read Test No Token', function () {
 
-            it('should return {ok:1, json_result}', function () {
+            it('should return {ok:0, error:noToken}', function () {
 
                 assert.strictEqual(true, true);
 
@@ -89,7 +87,7 @@ var assert = require("assert");
 
         describe('Update Test No Token', function () {
 
-            it('should return {ok:1}', function () {
+            it('should return {ok:0, error:noToken}', function () {
 
                 assert.strictEqual(true, true);
 
@@ -98,7 +96,7 @@ var assert = require("assert");
 
         describe('Delete Test No Token', function () {
 
-            it('should return {ok:1}', function () {
+            it('should return {ok:0, error:noToken}', function () {
 
                 assert.strictEqual(true, true);
 
@@ -107,7 +105,7 @@ var assert = require("assert");
 
         describe('List Test No Token', function () {
 
-            it('should return {ok:1, JsonList}', function () {
+            it('should return {ok:0, error:noToken}', function () {
 
                 assert.strictEqual(true, true);
 
@@ -116,7 +114,7 @@ var assert = require("assert");
 
         describe('Create Test Invalid Data', function () {
 
-            it('should return mongo id', function () {
+            it('should return {ok:0, error:invalidData}', function () {
 
                 assert.strictEqual(true, true);
 
@@ -125,7 +123,7 @@ var assert = require("assert");
 
         describe('Read Test Invalid Key', function () {
 
-            it('should return {ok:1, json_result}', function () {
+            it('should return {ok:0, error:invalidKey}', function () {
 
                 assert.strictEqual(true, true);
 
@@ -134,7 +132,7 @@ var assert = require("assert");
 
         describe('Update Test Invalid Key', function () {
 
-            it('should return {ok:1}', function () {
+            it('should return {ok:0, error:invalidKey}', function () {
 
                 assert.strictEqual(true, true);
 
@@ -143,7 +141,7 @@ var assert = require("assert");
 
         describe('Delete Test Invalid Key', function () {
 
-            it('should return {ok:1}', function () {
+            it('should return {ok:0, error:invalidKey}', function () {
 
                 assert.strictEqual(true, true);
 
@@ -152,7 +150,7 @@ var assert = require("assert");
 
         describe('List Test Invalid Key', function () {
 
-            it('should return {ok:1, JsonList}', function () {
+            it('should return {ok:0, error:invalidKey}', function () {
 
                 assert.strictEqual(true, true);
 
@@ -160,17 +158,7 @@ var assert = require("assert");
         });
 
 
-
-
-
-
-
-
-
-
-
     });
-
 
 
 })();
