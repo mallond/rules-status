@@ -13,7 +13,7 @@ var assert = require("assert");
 
     "use strict";
 
-    describe('Test Suite  ', function () {
+    describe('Test Suite Biz-Status ', function () {
 
         describe('Token Test', function () {
 
@@ -68,6 +68,99 @@ var assert = require("assert");
 
             });
         });
+
+        describe('Create Test No Token', function () {
+
+            it('should return mongo id', function () {
+
+                assert.strictEqual(true, true);
+
+            });
+        });
+
+        describe('Read Test No Token', function () {
+
+            it('should return {ok:1, json_result}', function () {
+
+                assert.strictEqual(true, true);
+
+            });
+        });
+
+        describe('Update Test No Token', function () {
+
+            it('should return {ok:1}', function () {
+
+                assert.strictEqual(true, true);
+
+            });
+        });
+
+        describe('Delete Test No Token', function () {
+
+            it('should return {ok:1}', function () {
+
+                assert.strictEqual(true, true);
+
+            });
+        });
+
+        describe('List Test No Token', function () {
+
+            it('should return {ok:1, JsonList}', function () {
+
+                assert.strictEqual(true, true);
+
+            });
+        });
+
+        describe('Create Test Invalid Data', function () {
+
+            it('should return mongo id', function () {
+
+                assert.strictEqual(true, true);
+
+            });
+        });
+
+        describe('Read Test Invalid Key', function () {
+
+            it('should return {ok:1, json_result}', function () {
+
+                assert.strictEqual(true, true);
+
+            });
+        });
+
+        describe('Update Test Invalid Key', function () {
+
+            it('should return {ok:1}', function () {
+
+                assert.strictEqual(true, true);
+
+            });
+        });
+
+        describe('Delete Test Invalid Key', function () {
+
+            it('should return {ok:1}', function () {
+
+                assert.strictEqual(true, true);
+
+            });
+        });
+
+        describe('List Test Invalid Key', function () {
+
+            it('should return {ok:1, JsonList}', function () {
+
+                assert.strictEqual(true, true);
+
+            });
+        });
+
+
+
 
 
 
