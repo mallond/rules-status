@@ -1,10 +1,11 @@
-# BizRez.com  JavaScript Dynamic Status Engine
+# BizRez.com  JavaScript Dynamic Status Engine (Embedded BPM Component)
 
 A dynamic Document Object Model B-Tree indexed based Status Engine.
 Simplistically designed to accommodate different domain models by extending the base schema.
 Scalable vertically in a Big Data fashion, using MongoDB as the main driver for peta byte
 organic growth. B-Tree efficient for access, as speed is a requirement. Light dynamic Document
-Object model for differing Business Domain Solutions. Pragmatic.
+Object model for differing Business Domain Solutions. Pragmatic and embeddable.
+
 
 "End in Mind" - Stephen Covey
 What needs to be measured,
@@ -41,7 +42,14 @@ Types of Status:
 
 ## Use Case
 
-Provide a simple rest interface to track a process throughout its useful life cycle. This to include time SLAs, and escalation attributes. The process should adopt general BPM status of: New, Pending, Completed. The process status is not to be dependent on any screen, and must behave in a dynamic nature that is wholly driven by the business process. A deep link property shall be provided for linkage to the current status. This use case to be a prototype of the Work Status of a simple process, and will serve as a base design to extend into a more complete Business domain solution
+Provide a simple rest interface to track a process throughout its useful life cycle.
+This to include time SLAs, and escalation attributes. The process should adopt general
+BPM status of: New, Pending, Completed. The process status is not to be dependent on any screen,
+and must behave in a dynamic nature that is wholly driven by the business process. Provide
+status as a service, and employ an embeddable mind set in design.
+A deep link property shall be provided for linkage to the current status.
+This use case to be a prototype of the Work Status of a simple process,
+and will serve as a base design to extend into a more complete Business domain solution
 
 
 Schema:
@@ -58,7 +66,9 @@ Schema:
 - Priority			    [0 - 100]
 - Child process			Array of dependent statuses
 - Create Date			Create Date
+- Create Owner Id       Create Owner Id
 - Completion Date		Completion Date
+- Completion Owner Id   Completion Owner Id
 - Goal Date			    Goal Date
 - Deadline Date			Deadline Date
 - Header			    Header
