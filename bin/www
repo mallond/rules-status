@@ -2,7 +2,7 @@
 
 (function () {
 
-    "user strict";
+    "use strict";
 
     var debug = require('debug')('bizstatus');
     var app = require('../index');
