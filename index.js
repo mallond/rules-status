@@ -9,12 +9,13 @@
 
     "use strict";
 
-    var dao = require('./db/db');
+    var dao = require('./db/connect');
     var routes = require('./routes/statusRouter');
     var cors = require('./security/cors');
     var security = require('./security/security');
     var config = require('./config.json');
     var express = require('express');
+    var expressValidator = require('express-validator');
     var logger = require('morgan');
     var bodyParser = require('body-parser');
     var mongoose = require('mongoose');
@@ -41,6 +42,9 @@
     app.use(bodyParser.urlencoded());
     app.use(express.static(path.join(__dirname, 'demo')));
     app.use(favicon(__dirname + '/demo/images/favicon.ico'));
+
+    //app.use(express.bodyParser());
+    app.use(expressValidator());
 
 
 

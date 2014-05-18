@@ -31,10 +31,8 @@
         completionDate: Date,                           // Completion Date
         goalDate: { type: Date, default: Date.now },    // Goal Date
         deadlineDate: { type: Date, default: Date.now },// Deadline Date
-        header: Schema.Types.Mixed,                     // Header detail
-        headerDescription: String,                      // Header description
-        body: Schema.Types.Mixed,                       // Body detail
-        bodyDescription: String,                        // Body description
+        header: {type: String, required: true},         // Header
+        detail: {type: String, required: true},         // Detail
         deeplink: String                                // Deep Link to a page, url, application, view, ...
 
     });

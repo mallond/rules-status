@@ -2,22 +2,34 @@
 //     (c) 2004-2014 David Mallon
 //     Freely distributed under the MIT license.
 
-/*global describe: false, it: false*/
+/*global describe: false, it: false, require: false, console: false*/
+
+
 
 var assert = require("assert");
+var http = require('http');
 
 
 (function () {
 
     "use strict";
 
+    // Cannot do CORS use local server: Use curl to test CORS
+    var url = "http://localhost:3000";
+             //http://localhost:63342/bizstatus/demo/index.html
+
+
     describe('Test Suite Biz-Status ', function () {
+
+
 
         describe('Token Test', function () {
 
+            //curl -H "Content-Type: application/json" -X GET -d '{"name":"mary"}' http://localhost:3000/authenticate
+
             it('should return token', function () {
 
-                assert.strictEqual(true, true);
+
 
             });
         });

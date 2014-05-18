@@ -12,6 +12,7 @@
     var mongoose = require('mongoose');
     var config = require('../config');
     var Status = mongoose.model('Status');
+    var validate = require('../db/validation');
     var mongoosePg = require('mongoose-paginate');
 
 
@@ -38,52 +39,57 @@
     };
 
     // Create
-    exports.statusCreate = function(data, req, res, next) {
+    exports.statusCreate = function(data, req, res) {
+
 
         new Status({
 
-            org: 'bizrez',
-            div: 'lasVegas',
-            unit: 'dev',
+            org: data.org || 'test_org',
+            div: data.div || 'test_div',
+            unit: data.unit || 'test_unit',
             ownerId: data.user,
-            isPerson: true,
-            assignmentType: 'Task',
-            status: data.status,
-            statusInfo: 'Testing this ',
-            priority: data.priority,   // 0 - 100
-            createDate: Date.now(),
-            completionDate: Date.now(),
-            goalDate: Date.now(),
-            deadlineDate: Date.now(),
-            header: {header: data.header},
-            headerDescription: data.header,
-            body: {body: data.body},
-            bodyDescription: 'Testing this body',
-            deeplink: 'http://www.bizrez.com'
+            isPerson: data.person || true,
+            assignmentType: data.type || 'Test Assignment Type',
+            status: data.status || 'Test Status',
+            statusInfo: data.statusInfo || 'Test Status Info ',
+            priority: data.priority || 10,   // 0 - 100
+            createDate: data.createDate || Date.now(),
+            completionDate: data.completionDate || Date.now(),
+            goalDate: data.goalDate || Date.now(),
+            deadlineDate: data.deadlineDate || Date.now(),
+            header: data.header || 'Test Header',
+            detail: data.detail || 'Test Detail',
+            deeplink: data.deepLink ||  'http://www.bizrez.com'
 
         }).save(function (err, assignment, count) {
 
-                if (err) {return next(err);}
+                if (err) {
+                    return res.json({ok:0});
+                } else {
 
-                res.json({ok: count, id: assignment._id});
+                    res.json({ok: 1, id: assignment._id});
+                }
 
             });
     };
 
-    exports.statusRead = function(data, req, res, next) {
+    exports.statusRead = function(query, req, res) {
 
         console.log('read');
+        res.json({ok:1, 'result': {tada:1}});
 
     };
 
-    exports.statusUpdate = function(data, req, res, next) {
+    exports.statusUpdate = function(data, req, res) {
 
         console.log('updated');
+        res.json({ok:1});
     };
 
-    exports.statusDelete = function(data, req, res, next) {
+    exports.statusDelete = function(data, req, res) {
 
         console.log('deleted');
+        res.json({ok:1});
 
     };
 

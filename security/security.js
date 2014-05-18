@@ -33,10 +33,10 @@
 
     exports.getToken = function (req, res) {
 
-        var name = req.query.name || req.body.name;
-
+        var userId = req.query.userId || req.body.userId;
 
         // Hack User always has a match - demo only
+        // Also need to add a check for referrer
         var isMatch = true;
 
         if (isMatch) {
@@ -46,7 +46,7 @@
 
             var token = jwt.encode(
                 {
-                    iss: name,
+                    iss: userId,
                     exp: expires
                 },
 

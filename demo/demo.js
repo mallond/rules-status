@@ -2,7 +2,7 @@
 //     (c) 2004-2014 David Mallon
 //     Freely distributed under the MIT license.
 
-/*global $: false, console: false*/
+/*global $: false, console: false, alert: false*/
 
 (function () {
 
@@ -56,21 +56,21 @@
         row.append($("<td>" + rowData.ownerId + "</td>"));
         row.append($("<td>" + rowData.status + "</td>"));
         row.append($("<td>" + rowData.priority + "</td>"));
-        row.append($("<td>" + rowData.headerDescription + "</td>"));
-        row.append($("<td>" + rowData.body.body + "</td>"));
-        row.append($("<td>" + rowData._id + "</td>"));
+        row.append($("<td>" + rowData.header + "</td>"));
+        row.append($("<td>" + rowData.detail + "</td>"));
+        row.append($("<td>" + "" + rowData._id + "</td>"));
     }
 
     function create(data, pageNumber) {
 
-        data.name = 'mary';
+        data.userId = 'mary';
         data.pageNumber = pageNumber;
         data.token = getCredentials();
         data.user = $('#userSelected').val();
         data.status = $('#statusSelected').val();
         data.priority = $('#prioritySelected').val();
         data.header = $('#header').val();
-        data.body = $('#body').val();
+        data.detail = $('#detail').val();
 
         var jdata = JSON.stringify(data);
 
@@ -100,7 +100,7 @@
 
         var data = {};
         data.token = getCredentials();
-        data.name = 'mary';
+        data.userId = 'mary';
         data.pageNumber = pageNumber;
 
         var jdata = JSON.stringify(data);
@@ -130,12 +130,12 @@
 
     function authenticate(callback) {
 
-        var name = {"name": "mary"};
+        var userId = {"userId": "mary"};
 
         $.ajax({
             type: "GET",
             url: "http://localhost:3000/authenticate",
-            data: name,
+            data: userId,
             dataType: 'json',
             contentType: "application/json; charset=utf-8",
             crossDomain: true,
@@ -143,19 +143,25 @@
             },
             success: function (response) {
 
-                console.log('gettoken success:'+ response.token);
-                setCredentials(response.token);
-                callback();
-                //return response.token;
-                //getList(response, pageNumber);
+                console.dir(response);
+                if (response.error) {
+                    setError(response.error.msg);
+                } else {
+                    setCredentials(response.token);
+                    callback();
+                }
+
             },
             error: function (err) {
-                //todo
+                setError(err);
             }
         });
 
     }
 
+    function setError(err) {
+        alert(err);
+    }
 
     var idiv = document.createElement('div');
     idiv.id = "page";

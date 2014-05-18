@@ -52,28 +52,31 @@ This use case to be a prototype of the Work Status of a simple process,
 and will serve as a base design to extend into a more complete Business domain solution
 
 
-Schema:
+##Schema:
 
-- Organization 			Primary Index
-- Division			    Primary Index
-- Unit			        Primary Index
+- Organization 			Primary Key
+- Division			    Primary Key
+- Unit			        Primary Key
 - Owner Id			    Person or System
 - Is a Person			Is this a Person process or a System process
-- Is Parent			    Is this a Parent (default true)
 - Type				    Type = Work (for this Use Case)
 - Status				[New, Pending, Completed, Withdrawn]
 - Status Information	[Short description of status]
 - Priority			    [0 - 100]
-- Child process			Array of dependent statuses
 - Create Date			Create Date
-- Create Owner Id       Create Owner Id
 - Completion Date		Completion Date
-- Completion Owner Id   Completion Owner Id
 - Goal Date			    Goal Date
 - Deadline Date			Deadline Date
 - Header			    Header
 - Detail				Detail – Document Object Model
 - Deep link			    Deep link for HTML display and or process link
+
+## Mutable Properties
+- Status
+- Status Information
+- Priority
+- Detail
+- Deep Link
 
 ## Requirements
 
@@ -131,6 +134,16 @@ Now, to go on and sell this to the managers that need the information. As I stat
 the sexy part of an application. This pattern can be embded in the sexiest of applications. Good Cheer.
 
 Status of this Project: Scaffold work in process version 0.0.0 (version 0)
+
+## Validation
+
+express-validator
+
+## Error Format
+
+{error:{msg:'message', param:'param name'}}
+
+
 
 
 

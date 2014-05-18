@@ -19,10 +19,22 @@
     var mongoosePg = require('mongoose-paginate');
 
 
+
     // Return security token from Security
     router.getToken = function (req, res) {
 
-        security.getToken(req, res);
+        var userId = req.query.userId || req.body.userId;
+
+        // Validate Id Passed
+        req.checkQuery('userId', 'Invalid Credential').isAlpha();
+        var errors = req.validationErrors();
+        if (errors) {
+            res.json({
+                error: errors[0]
+            });
+        } else {
+            security.getToken(req, res);
+        }
 
     };
 

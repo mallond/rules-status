@@ -19,7 +19,7 @@
 
             // Intercept OPTIONS method
             if (req.method === 'OPTIONS') {
-                res.send(200);
+                res.send("{'ok':1'}",200);
             }
             else {
                 next();
