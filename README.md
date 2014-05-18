@@ -1,7 +1,7 @@
-# BizRez.com  JavaScript Dynamic Status Engine (Embedded BPM Component)
+# BizRez.com  JavaScript Dynamic Status Engine. Embedded BPM (Business Process Measurement) Component.
 
-A dynamic Document Object Model B-Tree indexed based Status Engine.
-Simplistically designed to accommodate different domain models by extending the base schema.
+## A Dynamic Document Object Model with B-Tree Indexed Performance.
+Simplistically designed to accommodate different domain models by extending a base schema.
 Scalable vertically in a Big Data fashion, using MongoDB as the main driver for peta byte
 organic growth. B-Tree efficient for access, as speed is a requirement. Light dynamic Document
 Object model for differing Business Domain Solutions. Pragmatic and embeddable.
@@ -38,8 +38,6 @@ Processing centric DB, called MongoDB, will take back the efficiencies.
 
 ## Bottom line: Reporting on your business.
 
-## Now, the BPM pros have construed a science in the monitoring of things with status, predominately in processes.  Managers just need to be in the know!
-
 ## Use Case
 
 Provide a simple rest interface to track a process throughout its useful life cycle.
@@ -48,11 +46,13 @@ BPM status of: New, Pending, Completed. The process status is not to be dependen
 and must behave in a dynamic nature that is wholly driven by the business process. Provide
 status as a service, and employ an embeddable mind set in design.
 A deep link property shall be provided for linkage to the current status.
-This use case to be a prototype of the Work Status of a simple process,
+This use case to provide a prototype of the Work Status of a simple process,
 and will serve as a base design to extend into a more complete Business domain solution
 
 
 ##Schema:
+
+"MongoDB is not 'Schemaless', you must think importantly that it is 'Dynamic.'"
 
 - Organization 			Primary Key
 - Division			    Primary Key
@@ -132,6 +132,8 @@ the sexy part of an application. This pattern can be embded in the sexiest of ap
 
 Status of this Project: Scaffold work in process version 0.0.0 (version 0)
 
+# At a Glance
+
 ## Security
 
  Encrypted Token
@@ -151,6 +153,20 @@ express-validator
 ## Logger
 
 Set to debug
+
+## Unit Test
+
+mocha
+
+## UI Demo
+
+Single page JQuery application. Used to test general functionality. see /demo/index.html
+
+## General app structure
+
+
+
+
 
 
 
