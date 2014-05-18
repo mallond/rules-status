@@ -12,6 +12,9 @@
     var jwt = require('jwt-simple');
     var moment = require('moment');
     var config = require('./../config.json');
+    var Log =  require('log');
+    var log = new Log(config.logLevel);
+    log.info('token.js - Logger Set');
 
     // User has already been authenticated - now he/she has a token to visit this site
     // Did not want to use cookie based authentication - we would have to create a cookie for each unique path
@@ -48,7 +51,6 @@
 
     };
 
-    console.log('token.js has been required');
 
 })();
 

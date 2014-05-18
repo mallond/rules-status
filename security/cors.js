@@ -2,14 +2,18 @@
 //     (c) 2004-2014 David Mallon
 //     Freely distributed under the MIT license.
 
-/*global console: false, module: false*/
+/*global console: false, module: false, require: false*/
 
 (function () {
 
     "use strict";
 
-    module.exports = function cors(req, res, next) {
+    var config = require('../config');
+    var Log =  require('log');
+    var log = new Log(config.logLevel);
+    log.info('cors.js - Logger Set');
 
+    module.exports = function cors(req, res, next) {
 
         return function cors(req, res, next) {
 
@@ -28,8 +32,6 @@
         };
 
     };
-
-    console.log('cors.js has been required');
 
 })();
 

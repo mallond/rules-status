@@ -9,7 +9,10 @@
 
     "use strict";
 
-    var config = require('./../config.json');
+    var config = require('../config');
+    var Log =  require('log');
+    var log = new Log(config.logLevel);
+    log.info('Connect.js - Logger Set');
 
     var mongoose = require('mongoose');
     var schema =  require('./schema');
@@ -18,8 +21,7 @@
     var dbConnect = config.db.host+':'+config.db.port+'/'+config.db.name;
     mongoose.connect(dbConnect);
 
-    console.log('mongoose connected: '+ dbConnect);
-    console.log('db.js has been required');
+    log.info('mongoose connected: '+ dbConnect);
 
 })();
 

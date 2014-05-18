@@ -25,6 +25,7 @@
     var Log =  require('log');
 
     var log = new Log(config.logLevel);
+
     log.info('Logger loaded. Logging level: '+ config.logLevel);
     log.debug('Ready to Develop - debug mode set');
 
@@ -43,10 +44,8 @@
     app.use(express.static(path.join(__dirname, 'demo')));
     app.use(favicon(__dirname + '/demo/images/favicon.ico'));
 
-    //app.use(express.bodyParser());
+    // Validator
     app.use(expressValidator());
-
-
 
     // Allow Cross-origin resource sharing
     app.use(cors());
