@@ -22,7 +22,7 @@ with a vengeance, and this little language called JavaScript, along with a very 
 Processing centric DB, called MongoDB, will take back the efficiencies.
 
 
-Types of Status:
+## Types of Status:
 
 - When something starts
 - When something ends
@@ -109,12 +109,9 @@ MongoDB
 
 ## CRUD a few CURL Examples
 
-Security - Encrypted Token
 
 Reasoning behind Token - The token in the response header works fine for single domain apps,
 however, this is problematic, when you do CORS. The below have been tested using CORS.
-
-CORS has been implemented
 
 Consolidated actions to to type of http METHODS [GET, POST]. Works with all modern browsers utilizing jQuery
 
@@ -135,6 +132,14 @@ the sexy part of an application. This pattern can be embded in the sexiest of ap
 
 Status of this Project: Scaffold work in process version 0.0.0 (version 0)
 
+## Security
+
+ Encrypted Token
+
+## CORS
+
+Implemented
+
 ## Validation
 
 express-validator
@@ -142,6 +147,10 @@ express-validator
 ## Error Format
 
 {error:{msg:'message', param:'param name'}}
+
+## Logger
+
+Set to debug
 
 
 
