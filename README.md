@@ -7,22 +7,16 @@ organic growth. B-Tree efficient for access, as speed is a requirement. Light dy
 Object model for differing Business Domain Solutions. Pragmatic and embeddable.
 
 
-"End in Mind" - Stephen Covey
+## "End in Mind" - Stephen Covey
 What needs to be measured,
 Who needs to be measured,
 Why it needs to be measured,
 Who is the audience.
-
-In the old days of Data Processing, the end in mind was always the main reason for the design - how can
-I say... reporting. You could say the "Report was King." Somewhere, and somehow, the UI got all the fan fare and "UI is King."  And
-mindset swept the Business Analyst focus. A Most human, we all want to be sexy, and no doubt, that
-the UI is the sexiest part of what the end user sees. But there is more beyond sex appeal and fashion.
-People just forgot what is important. I believe that Data Processing is back
-with a vengeance, and this little language called JavaScript, along with a very Data
-Processing centric DB, called MongoDB, will take back the efficiencies.
+What are the reporting needs
+What are the Key Performance Indexes
 
 
-## Types of Status:
+## Types of tracking:
 
 - When something starts
 - When something ends
@@ -34,9 +28,6 @@ Processing centric DB, called MongoDB, will take back the efficiencies.
 - Projection of happenings
 - Internet of things
 
-## KPI – Key Point Indicators
-
-## Bottom line: Reporting on your business.
 
 ## Use Case
 
@@ -48,6 +39,17 @@ status as a service, and employ an embeddable mind set in design.
 A deep link property shall be provided for linkage to the current status.
 This use case to provide a prototype of the Work Status of a simple process,
 and will serve as a base design to extend into a more complete Business domain solution
+
+## Requirements
+
+- Restful service – input/output JSON
+- Big Data – MongoDB for this prototype
+- No SQL – Schema based but dynamic in nature
+- Document Objet Model
+- Cross Domain accessible
+- Encrypted Token for authentication
+
+The actual implementation of this status engine is rather simple. Based primarily on simple CRUD type operations.  The power is in the usage of the MongoDB based status schema. This is were imagination is the most important ingredient.  The beauty of a No-SQL design is the ability of this simple design to morph into specific domain controlled status requirements. It can be assumed that this baseline design is generic enough to be extended into domain specific solutions.
 
 
 ##Schema:
@@ -78,16 +80,6 @@ and will serve as a base design to extend into a more complete Business domain s
 - Detail
 - Deep Link
 
-## Requirements
-
-- Restful service – input/output JSON
-- Big Data – MongoDB for this prototype
-- No SQL – Schema based but dynamic in nature
-- Document Objet Model
-- Cross Domain accessible
-- Encrypted Token for authentication
-
-The actual implementation of this status engine is rather simple. Based primarily on simple CRUD type operations.  The power is in the usage of the MongoDB based status schema. This is were imagination is the most important ingredient.  The beauty of a No-SQL design is the ability of this simple design to morph into specific domain controlled status requirements. It can be assumed that this baseline design is generic enough to be extended into domain specific solutions.
 
 ## Technology Implementation
 
@@ -149,6 +141,21 @@ express-validator
 ## Error Format
 
 {error:{msg:'message', param:'param name'}}
+
+## Create Format
+see Schema
+
+## Read Format
+{userId:"id", id:"id"}
+
+## Update Format
+
+{userId:"id", id:"id", status:"status" | null, statusInfo:"info" | null, priority: "priority" | null
+detail: "detail" | null, deepLink: "deeplink" | null}
+
+## Delete Format
+There is no hard delete. Set status = withdraw
+
 
 ## Logger
 
