@@ -8,12 +8,16 @@ Object model for differing Business Domain Solutions. Pragmatic and embeddable.
 
 
 ## "End in Mind" - Stephen Covey
-What needs to be measured,
-Who needs to be measured,
-Why it needs to be measured,
-Who is the audience.
-What are the reporting needs
-What are the Key Performance Indexes
+"the ability to envision in your mind what you cannot at present see with your eyes.
+ It is based on the principle that all things are created twice.
+ There is a mental (first) creation, and a physical (second) creation" - Stephen Covey
+
+- What needs to be measured,
+- Who needs to be measured,
+- Why it needs to be measured,
+- Who is the audience.
+- What are the reporting needs
+- What are the Key Performance Indexes
 
 
 ## Types of tracking:
@@ -81,7 +85,7 @@ The actual implementation of this status engine is rather simple. Based primaril
 - Deep Link
 
 
-## Technology Implementation
+## Module Dependencies
 
 Node.js
 MongoDB
@@ -99,24 +103,19 @@ MongoDB
        "mocha": "1.18.2"
 
 
-## CRUD a few CURL Examples
+## CURL Examples
 
+Consolidated actions to to type of http METHODS [POST]. Works with all modern browsers utilizing jQuery
 
-Reasoning behind Token - The token in the response header works fine for single domain apps,
-however, this is problematic, when you do CORS. The below have been tested using CORS.
+ Step one: Request token /authenticate
 
-Consolidated actions to to type of http METHODS [GET, POST]. Works with all modern browsers utilizing jQuery
+ Step two: Use token for all rest service calls /status/[create, read, paginate, update]
 
-Step one: Request token
-Step two: Use token for all rest service calls
-
-- curl -H "Content-Type: application/json" -X GET -d '{"name":"mary"}' http://localhost:3000/authenticate
+- curl -H "Content-Type: application/json" -X POST -d '{"name":"mary"}' http://localhost:3000/authenticate
 - curl -H "Content-Type: application/json" -X POST -d '{add token and data}' http://localhost:3000/status/create
-  Token and Data Example: (you have to have valid json and get rid of any spaces between elements
-  curl -H "Content-Type: application/json" -X POST -d '{ "name": "mary","pageNumber": 1,"token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJtYXJ5IiwiZXhwIjoxMzk5Nzc3MjcyMjIxfQ.Dkb1hjoWsw6fnkI1c6gnzc_ACpQDTp0M-2gt6VEbmuA","user": "Fred","status": "New","priority": "High","header": "header data ","body": "body data" }' http://localhost:3000/status/create
+- curl -H "Content-Type: application/json" -X POST -d '{add token and data }' http://localhost:3000/status/create/paginate
 - curl -H "Content-Type: application/json" -X POST -d '{add token from authenticate}' http://localhost:3000/status/read
 - curl -H "Content-Type: application/json" -X POST -d '{add token from authenticate}' http://localhost:3000/status/update
-- curl -H "Content-Type: application/json" -X DELETE -d '{add token from authenticate}' http://localhost:3000/status/delete
 
 
 Now, to go on and sell this to the managers that need the information. As I stated earlier, that the UI was
@@ -142,19 +141,27 @@ express-validator
 
 {error:{msg:'message', param:'param name'}}
 
+# CRUD
+
 ## Create Format
-see Schema
+input - see Schema
+output - {ok:1}
+
 
 ## Read Format
-{ownerId:"id", id:"id"}
+input - {ownerId:"id", id:"id"}
+output - {ok:1, result:{}}
+
 
 ## Update Format
 
-{ownerId:"id", id:"id", status:"status" | null, statusInfo:"info" | null, priority: "priority" | null
+input - {ownerId:"id", id:"id", status:"status" | null, statusInfo:"info" | null, priority: "priority" | null
 detail: "detail" | null, deepLink: "deeplink" | null}
+output - {ok:1}
+
 
 ## Delete Format
-There is no hard delete. Set status = withdraw
+There is no hard delete. Set status = withdraw using an update
 
 
 ## Logger
