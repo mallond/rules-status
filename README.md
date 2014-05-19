@@ -1,4 +1,4 @@
-# BizRez.com  JavaScript Dynamic Status Engine. Embedded BPM (Business Process Measurement) Service.
+# BizRez.com  JavaScript Dynamic Status Engine. Embedded BPM (Business Process Measurement) Service
 
 ## A Dynamic Document Object Model with B-Tree Indexed Performance.
 Simplistically designed to accommodate different domain models by extending a base schema.
