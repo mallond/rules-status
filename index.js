@@ -51,7 +51,7 @@
     app.use(cors());
 
     // Request Json Web Token
-    app.get('/authenticate', routes.getToken);
+    app.post('/authenticate', routes.getToken);
 
     app.use('/status', routes.authenticate);
     app.post('/status/create', routes.create);

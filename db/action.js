@@ -93,5 +93,14 @@
 
     };
 
+    exports.purge = function(data) {
+
+        var result = Status.remove(data, function() {
+
+        });
+        console.dir(result);
+
+    };
+
 })();
 

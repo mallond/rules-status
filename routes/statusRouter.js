@@ -28,7 +28,7 @@
         var userId = req.query.userId || req.body.userId;
 
         // Validate Id Passed
-        req.checkQuery('userId', 'Invalid Credential').isAlpha();
+        req.checkBody('userId', 'Invalid Credential').isAlpha();
         var errors = req.validationErrors();
         if (errors) {
             res.json({

@@ -18,7 +18,12 @@
 
     exports.authenticate = function (req, res, next) {
 
+
+
         var token = req.body.token || req.query.token;
+        console.log('');
+        log.debug('Authenticate token:'+ token);
+
         var decoded = jwt.decode(token, config.tokenKey);
 
         if (token && decoded.iss) {
@@ -35,6 +40,8 @@
     exports.getToken = function (req, res) {
 
         var userId = req.query.userId || req.body.userId;
+
+        log.debug("security.js - getToken - userId: " +userId);
 
         // Hack User always has a match - demo only
         // Also need to add a check for referrer

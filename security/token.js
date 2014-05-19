@@ -21,7 +21,7 @@
 
     exports.getToken = function (req, res) {
 
-        var name = req.query.name;
+        var name = req.body.userId;
 
         // Hack User always has a match - demo only
         var isMatch = true;

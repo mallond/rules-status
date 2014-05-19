@@ -130,12 +130,13 @@
 
     function authenticate(callback) {
 
-        var userId = {"userId": "mary"};
+        var data = {"userId": "mary"};
+        var jdata = JSON.stringify(data);
 
         $.ajax({
-            type: "GET",
+            type: "POST",
             url: "http://localhost:3000/authenticate",
-            data: userId,
+            data: jdata,
             dataType: 'json',
             contentType: "application/json; charset=utf-8",
             crossDomain: true,
@@ -143,9 +144,13 @@
             },
             success: function (response) {
 
-                console.dir(response);
+
                 if (response.error) {
+
+
+
                     setError(response.error.msg);
+
                 } else {
                     setCredentials(response.token);
                     callback();
@@ -160,7 +165,11 @@
     }
 
     function setError(err) {
-        alert(err);
+
+        console.dir(err);
+
+        $.jnotify("no go", 3000);
+        //alert(err);
     }
 
     var idiv = document.createElement('div');
