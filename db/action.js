@@ -28,6 +28,7 @@
                 console.error(error);
             } else {
                 var data = {};
+                data.ok = 1;
                 data.paginatedResults = paginatedResults;
                 data.itemCount = itemCount;
                 res.json(data);
@@ -75,8 +76,21 @@
 
     exports.statusRead = function(query, req, res) {
 
-        console.log('read');
-        res.json({ok:1, 'result': {tada:1}});
+        console.dir(query);
+        var findIt = {ownerId: query.ownerId};
+        console.dir(findIt);
+        var result = Status.find(findIt, function(err, status) {
+
+            console.dir(status);
+
+            if (err) {
+                res.json({ok:0, err:err});
+            } else {
+                res.json({ok: 1, result: status});
+            }
+
+
+        });
 
     };
 
@@ -96,9 +110,9 @@
     exports.purge = function(data) {
 
         var result = Status.remove(data, function() {
-
+            result = "";
         });
-        console.dir(result);
+
 
     };
 

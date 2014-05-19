@@ -25,10 +25,10 @@
     // Return security token from Security
     router.getToken = function (req, res) {
 
-        var userId = req.query.userId || req.body.userId;
+        var ownerId = req.query.ownerId || req.body.ownerId;
 
         // Validate Id Passed
-        req.checkBody('userId', 'Invalid Credential').isAlpha();
+        req.checkBody('ownerId', 'Invalid Credential').isAlpha();
         var errors = req.validationErrors();
         if (errors) {
             res.json({
@@ -66,13 +66,17 @@
     // Read
     router.read = function (req, res) {
 
+        var data = req.query.body || req.body;
+
         action.statusRead(data, req, res);
 
-        res.json({ok: 1, read: 1});
+
     };
 
     // Update
     router.update = function (req, res) {
+
+        var data = req.query.body || req.body;
 
         action.statusUpdate(data, req, res);
 

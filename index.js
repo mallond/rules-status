@@ -55,7 +55,8 @@
 
     app.use('/status', routes.authenticate);
     app.post('/status/create', routes.create);
-    app.post('/status/read', routes.paginate);
+    app.post('/status/read', routes.read);
+    app.post('/status/paginate', routes.paginate);
     app.post('/status/update', routes.update);
     app.delete('/status/delete', routes.delete);
 

@@ -146,11 +146,11 @@ express-validator
 see Schema
 
 ## Read Format
-{userId:"id", id:"id"}
+{ownerId:"id", id:"id"}
 
 ## Update Format
 
-{userId:"id", id:"id", status:"status" | null, statusInfo:"info" | null, priority: "priority" | null
+{ownerId:"id", id:"id", status:"status" | null, statusInfo:"info" | null, priority: "priority" | null
 detail: "detail" | null, deepLink: "deeplink" | null}
 
 ## Delete Format

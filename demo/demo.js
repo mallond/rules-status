@@ -63,7 +63,7 @@
 
     function create(data, pageNumber) {
 
-        data.userId = 'mary';
+        data.ownerId = 'mary';
         data.pageNumber = pageNumber;
         data.token = getCredentials();
         data.user = $('#userSelected').val();
@@ -100,14 +100,14 @@
 
         var data = {};
         data.token = getCredentials();
-        data.userId = 'mary';
+        data.ownerId = 'mary';
         data.pageNumber = pageNumber;
 
         var jdata = JSON.stringify(data);
 
         $.ajax({
             type: "POST",
-            url: "http://localhost:3000/status/read",
+            url: "http://localhost:3000/status/paginate",
             data: jdata,
             dataType: 'json',
             contentType: "application/json; charset=utf-8",
@@ -130,7 +130,7 @@
 
     function authenticate(callback) {
 
-        var data = {"userId": "mary"};
+        var data = {"ownerId": "mary"};
         var jdata = JSON.stringify(data);
 
         $.ajax({

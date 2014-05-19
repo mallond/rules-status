@@ -40,7 +40,7 @@
     var TokenSchema =  new Schema({
 
         token: {type: String, required: true},
-        userId: {type: String, require: true},
+        ownerId: {type: String, require: true},
         refererUrl: {type: String, required: true}
 
     });
