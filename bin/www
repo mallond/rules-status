@@ -1,12 +1,22 @@
 #!/usr/bin/env node
-var debug = require('debug')('bizstatus');
-var app = require('../app');
-var config = require('../config.json');
 
-app.set('port', process.env.PORT || config.nodePort);
+(function () {
+
+    "use strict";
+
+    var debug = require('debug')('bizstatus');
+    var app = require('../index');
+    var config = require('../config.json');
+    var Log = require('log');
+    var log = new Log(config.logLevel);
+
+    app.set('port', process.env.PORT || config.nodePort);
+
+    var server = app.listen(app.get('port'), function () {
+        log.info('Express BizStatus Server listening on port ' + server.address().port);
+
+    });
+
+})();
 
 
-
-var server = app.listen(app.get('port'), function() {
-  console.log('Express server listening on port ' + server.address().port);
-});
