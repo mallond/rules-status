@@ -1,10 +1,10 @@
-# Status - JavaScript Dynamic Status Service
+# Status - JavaScript Embedded Status Service
 
 ## Embedded BPM (Business Process Measurement) Service
 Simplistically designed to accommodate different business models by extending a document model.
 Scalable vertically in a Big Data fashion, using MongoDB as the main driver for peta byte
 organic growth. B-Tree efficient for access, as speed is a requirement. Light dynamic Document
-Object model for differing Business Domain Solutions. Pragmatic and embeddable.
+Object model for differing business domain solutions. Pragmatic and embeddable.
 
 Node.js, MongoDB, full stack JavaScript - GitHub
 
