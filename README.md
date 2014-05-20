@@ -1,11 +1,12 @@
-# BizRez.com  JavaScript Dynamic Status Engine. Embedded BPM (Business Process Measurement) Service
+# Status - JavaScript Dynamic Status Service.
 
-## A Dynamic Document Object Model with B-Tree Indexed Performance.
-Simplistically designed to accommodate different domain models by extending a base schema.
+## Embedded BPM (Business Process Measurement) Service
+Simplistically designed to accommodate different domain models by extending a document model.
 Scalable vertically in a Big Data fashion, using MongoDB as the main driver for peta byte
 organic growth. B-Tree efficient for access, as speed is a requirement. Light dynamic Document
 Object model for differing Business Domain Solutions. Pragmatic and embeddable.
 
+Node.js, MongoDB, full stack JavaScript - GitHub
 
 ## "End in Mind" - Stephen Covey
 "the ability to envision in your mind what you cannot at present see with your eyes.
