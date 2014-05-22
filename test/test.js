@@ -85,6 +85,7 @@ log.info('test.js - Logger Set');
 
         // Set up the Token
         before(function (done) {
+            log.debug("Testing REST services using HTTP Calls");
             getToken(done);
             log.debug('Token:' + token);
         });
