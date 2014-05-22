@@ -5,7 +5,7 @@
 /*global require: false, module: false, exports: false, console: false, next: false*/
 
 
-(function() {
+(function () {
 
     "use strict";
 
@@ -15,9 +15,8 @@
     var validate = require('../db/validation');
     var mongoosePg = require('mongoose-paginate');
 
-
     // Paginate list
-    exports.statusPaginate = function(req, res, query, pageNumber) {
+    exports.statusPaginate = function (req, res, query, pageNumber) {
 
         query = query || {};
         pageNumber = pageNumber || 1;
@@ -33,15 +32,13 @@
                 data.itemCount = itemCount;
                 res.json(data);
 
-                //res.json(paginatedResults);
             }
         });
 
     };
 
     // Create
-    exports.statusCreate = function(data, req, res) {
-
+    exports.statusCreate = function (data, req, res) {
 
         new Status({
 
@@ -60,60 +57,60 @@
             deadlineDate: data.deadlineDate || Date.now(),
             header: data.header || 'Test Header',
             detail: data.detail || 'Test Detail',
-            deeplink: data.deepLink ||  'http://www.bizrez.com'
+            deeplink: data.deepLink || 'http://www.bizrez.com'
 
         }).save(function (err, assignment, count) {
 
                 if (err) {
-                    return res.json({ok:0});
+                    return res.json({ok: 0, err: err});
                 } else {
-
                     res.json({ok: 1, id: assignment._id});
                 }
 
             });
     };
 
-    exports.statusRead = function(query, req, res) {
+    // Read
+    exports.statusRead = function (query, req, res) {
 
-        console.dir(query);
         var findIt = {ownerId: query.ownerId};
-        console.dir(findIt);
-        var result = Status.find(findIt, function(err, status) {
-
-            console.dir(status);
+        var result = Status.find(findIt, function (err, status) {
 
             if (err) {
-                res.json({ok:0, err:err});
+                res.json({ok: 0, err: err});
+            } else {
+                res.json({ok: 1, result: status});
+            }
+        });
+    };
+
+    // Update
+    exports.statusUpdate = function (data, req, res) {
+
+        var query = data.query;
+        var update = data.update;
+
+
+
+        Status.update(query, update, {}, function (err, status) {
+
+            if (err) {
+                res.json({ok: 0, err: err});
             } else {
                 res.json({ok: 1, result: status});
             }
 
-
         });
-
+        res.json({ok: 1});
     };
 
-    exports.statusUpdate = function(data, req, res) {
+    // Unit testing only
+    exports.purge = function (data) {
 
-        console.log('updated');
-        res.json({ok:1});
-    };
-
-    exports.statusDelete = function(data, req, res) {
-
-        console.log('deleted');
-        res.json({ok:1});
-
-    };
-
-    exports.purge = function(data) {
-
-        var result = Status.remove(data, function() {
+        // This is used for unit testing only -
+        var result = Status.remove(data, function () {
             result = "";
         });
-
-
     };
 
 })();

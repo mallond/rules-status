@@ -42,23 +42,23 @@
 
     // Authenticate request
     router.authenticate = function (req, res, next) {
+
         security.authenticate(req, res, next);
+
     };
 
     // Router wrapper for paginate
     router.paginate = function (req, res) {
 
         var data = req.query.body || req.body;
-        //doPaginate(req, res, {}, 1);
         action.statusPaginate(req, res, {}, data.pageNumber);
+
     };
 
     // Create Status
     router.create = function (req, res) {
 
         var data = req.query.body || req.body;
-
-        //create status
         action.statusCreate(data, req, res);
 
     };
@@ -67,9 +67,7 @@
     router.read = function (req, res) {
 
         var data = req.query.body || req.body;
-
         action.statusRead(data, req, res);
-
 
     };
 
@@ -77,18 +75,7 @@
     router.update = function (req, res) {
 
         var data = req.query.body || req.body;
-
         action.statusUpdate(data, req, res);
-
-        res.json({ok: 1, update: 1});
-
-    };
-
-    // Delete
-    router.delete = function (req, res) {
-
-
-        res.json({ok: 1, delete: 1});
 
     };
 

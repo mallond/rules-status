@@ -2,13 +2,13 @@
 //     (c) 2004-2014 David Mallon
 //     Freely distributed under the MIT license.
 
-(function() {
+(function () {
 
     "use strict";
 
-    return function() {
+    return function () {
 
-        var create = function(data) {
+        var create = function (data) {
 
             return true;
 

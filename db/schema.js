@@ -18,10 +18,10 @@
 
     var StatusSchema = new Schema({
 
-        org: { type: String, required: true },          // Organization
-        div: { type: String, required: true},           // Division
-        unit: { type: String, required: true},          // Unit
-        ownerId: { type: String, required: true },      // Person, System
+        org: { type: String, index: true, required: true },          // Organization
+        div: { type: String, index: true, required: true},           // Division
+        unit: { type: String, index: true, required: true},          // Unit
+        ownerId: { type: String, index: true, required: true },      // Person, System
         isPerson: { type: Boolean, required: true },    // Does this assignment belong to a person
         assignmentType: {type: String, required: true}, // Work, Process, Task, Log, ...
         status: { type: String, required: true },       // New, Open, Closed, Removed
@@ -37,7 +37,10 @@
 
     });
 
-    var TokenSchema =  new Schema({
+    StatusSchema.index({ org: 1, div: 1, unit: 1, ownerId: 1 });
+    StatusSchema.index({ org: 1, div: 1, unit: 1, ownerId: 1, status: 1, priority: 1 });
+
+    var TokenSchema = new Schema({
 
         token: {type: String, required: true},
         ownerId: {type: String, require: true},
@@ -46,7 +49,6 @@
     });
 
     mongoose.model('Status', StatusSchema);
-
 
 })();
 
