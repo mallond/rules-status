@@ -99,7 +99,7 @@ log.info('test.js - Logger Set');
 
         describe('Token Test', function (done) {
 
-            //curl -H "Content-Type: application/json" -X POST -d '{"ownerId":"mary"}' http://localhost:3000/authenticate
+        //curl -H "Content-Type: application/json" -X POST -d '{"ownerId":"mary"}' http://localhost:3000/authenticate
 
             it('should return token', function (done) {
                 console.dir(token);
@@ -111,7 +111,7 @@ log.info('test.js - Logger Set');
 
         describe('Create Test with Token', function (done) {
 
-            //curl -H "Content-Type: application/json" -X POST -d '{add token and data}' http://localhost:3000/status/create
+        //curl -H "Content-Type: application/json" -X POST -d '{add token and data}' http://localhost:3000/status/create
 
             it('should return mongo id', function (done) {
 
@@ -140,7 +140,7 @@ log.info('test.js - Logger Set');
 
         describe('Read Test with Token', function (done) {
 
-            //curl -H "Content-Type: application/json" -X POST -d '{add token and data}' http://localhost:3000/status/read
+        //curl -H "Content-Type: application/json" -X POST -d '{add token and data}' http://localhost:3000/status/read
 
             it('should return {ok:1, json_result}', function (done) {
 
@@ -172,7 +172,6 @@ log.info('test.js - Logger Set');
         describe('Update Test with Token', function (done) {
 
         //curl -H "Content-Type: application/json" -X POST -d '{add token and data}' http://localhost:3000/status/update
-
 
             it('should return {ok:1}', function (done) {
 

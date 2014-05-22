@@ -89,8 +89,6 @@
         var query = data.query;
         var update = data.update;
 
-
-
         Status.update(query, update, {}, function (err, status) {
 
             if (err) {
@@ -100,7 +98,7 @@
             }
 
         });
-        res.json({ok: 1});
+        //res.json({ok: 1});
     };
 
     // Unit testing only
