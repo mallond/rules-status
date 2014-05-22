@@ -12,7 +12,6 @@
     var mongoose = require('mongoose');
     var config = require('../config');
     var Status = mongoose.model('Status');
-    var validate = require('../db/validation');
     var mongoosePg = require('mongoose-paginate');
 
     // Paginate list
