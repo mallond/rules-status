@@ -12,17 +12,16 @@
     var jwt = require('jwt-simple');
     var moment = require('moment');
     var config = require('./../config.json');
-    var Log =  require('log');
+    var Log = require('log');
     var log = new Log(config.logLevel);
     log.info('security.js - Logger Set');
 
     exports.authenticate = function (req, res, next) {
 
 
-
         var token = req.body.token || req.query.token;
         console.log('');
-        log.debug('Authenticate token:'+ token);
+        log.debug('Authenticate token:' + token);
 
         var decoded = jwt.decode(token, config.tokenKey);
 
@@ -41,7 +40,7 @@
 
         var ownerId = req.query.ownerId || req.body.ownerId;
 
-        log.debug("security.js - getToken - ownerId: " +ownerId);
+        log.debug("security.js - getToken - ownerId: " + ownerId);
 
         // Hack User always has a match - demo only
         // Also need to add a check for referrer

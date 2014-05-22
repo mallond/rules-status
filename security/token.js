@@ -12,7 +12,7 @@
     var jwt = require('jwt-simple');
     var moment = require('moment');
     var config = require('./../config.json');
-    var Log =  require('log');
+    var Log = require('log');
     var log = new Log(config.logLevel);
     log.info('token.js - Logger Set');
 

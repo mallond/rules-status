@@ -9,7 +9,7 @@
     "use strict";
 
     var config = require('../config');
-    var Log =  require('log');
+    var Log = require('log');
     var log = new Log(config.logLevel);
     log.info('cors.js - Logger Set');
 
@@ -23,7 +23,7 @@
 
             // Intercept OPTIONS method
             if (req.method === 'OPTIONS') {
-                res.send("{'ok':1'}",200);
+                res.send("{'ok':1'}", 200);
             }
             else {
                 next();
