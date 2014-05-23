@@ -6,6 +6,8 @@ Scalable vertically in a Big Data fashion, using MongoDB as the main driver for 
 organic growth. B-Tree efficient for access, as speed is a requirement. Light dynamic Document
 Object model for differing business domain solutions. Pragmatic and embeddable.
 
+<img src="http://localhost:63342/bizstatus/demo/images/bizrez_speedBW.jpg" style="position:absolute; right:0px; width=100px" />
+
 Node.js, MongoDB, full stack JavaScript - GitHub
 
 ## "End in Mind" - Stephen Covey

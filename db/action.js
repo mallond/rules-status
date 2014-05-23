@@ -4,7 +4,6 @@
 
 /*global require: false, module: false, exports: false, console: false, next: false*/
 
-
 (function () {
 
     "use strict";
@@ -98,7 +97,6 @@
             }
 
         });
-        //res.json({ok: 1});
     };
 
     // Unit testing only

@@ -6,7 +6,6 @@
 
 (function () {
 
-
     "use strict";
 
     var credentials = "";
@@ -15,7 +14,6 @@
     var pageSize = 10;
 
     function getPageNumber() {
-
         return pageNumber;
     }
 
@@ -32,15 +30,11 @@
     }
 
     function setCredentials(cred) {
-
         credentials = cred;
-
     }
 
     function getCredentials() {
-
         return credentials;
-
     }
 
     function drawTable(data) {
@@ -48,7 +42,6 @@
             drawRow(data[i]);
         }
     }
-
 
     function drawRow(rowData) {
         var row = $("<tr />");
@@ -144,10 +137,7 @@
             },
             success: function (response) {
 
-
                 if (response.error) {
-
-
 
                     setError(response.error.msg);
 
@@ -161,15 +151,13 @@
                 setError(err);
             }
         });
-
     }
 
     function setError(err) {
 
         console.dir(err);
-
         $.jnotify("no go", 3000);
-        //alert(err);
+
     }
 
     var idiv = document.createElement('div');
@@ -225,14 +213,12 @@
         $.jnotify('Item Updated ', 1000);
         var data = {};
 
-
     });
 
     $("#delete").click(function () {
 
         $.jnotify('Item Deleted ', 1000);
         var data = {};
-
 
     });
 
@@ -241,7 +227,6 @@
 
     $.jnotify('Demo Loaded ', 1000);
     $.jnotify('Time to just Do it! ', 2000);
-
 
     // Switch
     $("[data-toggle='switch']").wrap('<div class="switch" />').parent().bootstrapSwitch();

@@ -37,7 +37,6 @@
         } else {
             security.getToken(req, res);
         }
-
     };
 
     // Authenticate request

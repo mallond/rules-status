@@ -16,7 +16,6 @@ var Log = require('log');
 var log = new Log(config.logLevel);
 log.info('test.js - Logger Set');
 
-
 (function () {
 
     "use strict";
@@ -199,7 +198,6 @@ log.info('test.js - Logger Set');
                         done();
                     }
                 });
-
             });
         });
 
@@ -233,7 +231,6 @@ log.info('test.js - Logger Set');
                     }
 
                 });
-
             });
         });
     });

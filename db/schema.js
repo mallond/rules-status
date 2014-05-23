@@ -2,7 +2,6 @@
 //     (c) 2004-2014 David Mallon
 //     Freely distributed under the MIT license.
 
-
 /*global require: false, module: false, model: false, console: false*/
 
 (function (app) {

@@ -18,7 +18,6 @@
 
     exports.authenticate = function (req, res, next) {
 
-
         var token = req.body.token || req.query.token;
         console.log('');
         log.debug('Authenticate token:' + token);
@@ -30,7 +29,6 @@
         } else {
             res.end('Not authorized', 401);
         }
-
     };
 
     // User has already been authenticated - now he/she has a token to visit this site
@@ -67,7 +65,6 @@
         } else {
             res.send('Authentication error', 401);
         }
-
     };
 
 })();

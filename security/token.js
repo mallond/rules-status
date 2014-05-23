@@ -48,9 +48,7 @@
 
             res.send('Authentication error', 401);
         }
-
     };
-
 
 })();
 

@@ -37,7 +37,6 @@
     // Disable
     app.disable('x-powered-by');
 
-
     app.use(logger('dev'));
     app.use(bodyParser.json());
     app.use(bodyParser.urlencoded());
@@ -59,7 +58,6 @@
     app.post('/status/paginate', routes.paginate);
     app.post('/status/update', routes.update);
     app.delete('/status/delete', routes.delete);
-
 
     // catch 404 and forwarding to error handler
     app.use(function (req, res, next) {
