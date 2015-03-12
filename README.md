@@ -5,7 +5,7 @@ Simplistically designed to accommodate different business models by extending a 
 Scalable vertically in a Big Data fashion, using MongoDB as the main driver for peta byte
 organic growth. B-Tree efficient for access, as speed is a requirement. Light dynamic Document
 Object model for differing business domain solutions. Pragmatic and embeddable.
-
+   
 <img src="https://lh3.googleusercontent.com/-Vx-0T-N0MY0/U390MOsfd9I/AAAAAAAAG3g/nPxkGx16Oyw/w171-h152-no/bizrez_speedBWsml.gif" style="position:absolute; right:0px; width=100px" />
 
 Node.js, MongoDB, full stack JavaScript - GitHub
